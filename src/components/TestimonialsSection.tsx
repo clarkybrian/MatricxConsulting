@@ -90,7 +90,7 @@ const TestimonialsSection: React.FC = () => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => {
         // Reset à zéro quand on atteint la fin du premier set pour boucle infinie
-        if (prev >= testimonials.length * 320 / 320) {
+        if (prev >= 4 * 320 / 320) { // Utiliser 4 au lieu de testimonials.length
           return 0.005;
         }
         return prev + 0.003; // Déplacement fluide : 0.005px toutes les 16ms = 60fps fluide
@@ -98,7 +98,7 @@ const TestimonialsSection: React.FC = () => {
     }, 16) // 60fps pour une fluidité parfaite (16ms = 1000/60)
 
     return () => clearInterval(interval)
-  }, [testimonials.length])
+  }, []) // Pas de dépendances pour éviter les boucles
 
   // Tripler les témoignages pour un défilement vraiment infini
   const extendedTestimonials = [...testimonials, ...testimonials, ...testimonials]
