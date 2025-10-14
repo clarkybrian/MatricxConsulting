@@ -87,7 +87,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Email */}
-            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4">
+            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
               <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
                 <Mail className="w-6 h-6 text-primary-600" />
               </div>
@@ -99,25 +99,10 @@ const Contact: React.FC = () => {
                 </a>
               </div>
             </div>
-
-            {/* Adresse */}
-            <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-6 h-6 text-primary-600" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.page.info.address')}</h3>
-                <p className="text-gray-600 mb-2">{t('contact.page.info.addressDescription')}</p>
-                <p className="text-primary-600 font-medium">
-                  Douala, Makepe BM<br />
-                  BP 12777, Cameroun
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* Horaires */}
-          <div className="bg-gradient-to-r from-primary-600 to-secondary-500 text-white p-6 rounded-xl">
+          <div className="bg-gradient-to-r from-primary-600 to-secondary-500 text-white p-6 rounded-xl mt-6">
             <div className="flex items-center space-x-3 mb-4">
               <Clock className="w-6 h-6" />
               <h3 className="font-semibold">{t('contact.page.info.hours')}</h3>
@@ -303,20 +288,65 @@ const Contact: React.FC = () => {
 
           <ContactForm />
 
-          {/* Carte Google Maps */}
+          {/* Localisation */}
           <div className="bg-white rounded-2xl shadow-xl p-6 mt-16">
             <h3 className="text-xl font-bold text-gray-900 mb-4">{t('contact.page.location')}</h3>
-            <div className="w-full h-96 bg-gray-200 rounded-lg overflow-hidden">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.4142436057587!2d9.757311314770143!3d4.048404497209794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10610d0b6f9f5b49%3A0x7a6f8b5c2d3e4a5b!2sMakep%C3%A9%2C%20Douala%2C%20Cameroon!5e0!3m2!1sen!2sus!4v1697299200000!5m2!1sen!2sus"
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                title="MatriCx Consulting Location"
-              />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {/* Informations de localisation */}
+              <div className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <MapPin className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Adresse complète</h4>
+                    <p className="text-gray-600">
+                      Makepe Missoke<br />
+                      Douala, Cameroun<br />
+                      BP 12777
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Phone className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="font-semibold text-gray-900">Téléphone</h4>
+                    <a href="tel:+237677810120" className="text-primary-600 hover:text-primary-700">
+                      +237 677 810 120
+                    </a>
+                  </div>
+                </div>
+                <div className="mt-6">
+                  <a
+                    href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center space-x-2"
+                  >
+                    <MapPin size={16} />
+                    <span>Voir sur Google Maps</span>
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
+              </div>
+
+              {/* Carte alternative avec lien direct */}
+              <div className="w-full h-64 lg:h-80 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex flex-col items-center justify-center text-center p-6">
+                <MapPin className="w-16 h-16 text-primary-600 mb-4" />
+                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+                  Notre bureau à Douala
+                </h4>
+                <p className="text-gray-600 mb-4">
+                  Makepe Missoke, quartier d'affaires
+                </p>
+                <a
+                  href="https://www.google.com/maps/dir/?api=1&destination=Makepe+Missoke,+Douala,+Cameroun"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary inline-flex items-center space-x-2"
+                >
+                  <span>Obtenir l'itinéraire</span>
+                  <ArrowRight size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
