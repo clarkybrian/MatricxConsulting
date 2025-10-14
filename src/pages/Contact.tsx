@@ -146,52 +146,10 @@ const Contact: React.FC = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
                 {t('contact.page.form.title')}
               </h2>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600">
                 {t('contact.page.form.formDescription')}
               </p>
-              
-              {/* Options de contact */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                <div className="border-2 border-gray-200 rounded-xl p-6 hover:border-primary-300 transition-colors duration-200">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <MessageSquare className="w-6 h-6 text-primary-600" />
-                    <h3 className="font-semibold text-gray-900">Écrire un message</h3>
-                  </div>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Décrivez votre projet et nous vous répondrons sous 24h
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-primary-600 font-medium hover:text-primary-700 flex items-center space-x-2"
-                  >
-                    <span>Utiliser le formulaire</span>
-                    <ArrowRight size={16} />
-                  </button>
-                </div>
-                
-                <div className="border-2 border-primary-300 bg-primary-50 rounded-xl p-6">
-                  <div className="flex items-center space-x-3 mb-3">
-                    <Calendar className="w-6 h-6 text-primary-600" />
-                    <h3 className="font-semibold text-gray-900">Prendre rendez-vous</h3>
-                  </div>
-                  <p className="text-gray-600 text-sm mb-4">
-                    Réservez directement un créneau dans mon agenda
-                  </p>
-                  <button
-                    type="button"
-                    onClick={openCalendly}
-                    className="btn-primary inline-flex items-center space-x-2 group"
-                  >
-                    <Calendar size={16} />
-                    <span>Réserver maintenant</span>
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </button>
-                </div>
-              </div>
             </div>
-
-            <div id="contact-form"></div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
