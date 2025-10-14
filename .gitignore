@@ -46,3 +46,11 @@ coverage
 
 # OS
 Thumbs.db
+
+# Keep PWA icons (don't ignore them!)
+!public/*.png
+!public/*.ico
+!public/manifest.json
+!public/browserconfig.xml
+!public/robots.txt
+
