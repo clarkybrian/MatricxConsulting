@@ -7,36 +7,63 @@ export default {
   theme: {
     extend: {
       colors: {
+        // MatriCx Brand Primary - Jaune
         primary: {
-          50: '#EFF6FF',
-          100: '#DBEAFE',
-          500: '#3B82F6',
-          600: '#2563EB',
-          700: '#1D4ED8',
-          800: '#1E40AF',
-          900: '#1E3A8A',
+          50: '#FFFEF7',
+          100: '#FFFADB',
+          200: '#FFF4B8',
+          300: '#FFEC85',
+          400: '#FFE052',
+          500: '#FDC300',  // Couleur principale
+          600: '#E6B000',
+          700: '#CC9D00',
+          800: '#B38A00',
+          900: '#996F00',
         },
+        // MatriCx Brand Secondary - Gris
         secondary: {
-          50: '#FFFBEB',
-          100: '#FEF3C7',
-          400: '#FBBF24',
-          500: '#F59E0B',
-          600: '#D97706',
+          50: '#FAFAFA',
+          100: '#F4F4F4',
+          200: '#E5E5E5',
+          300: '#D4D4D4',
+          400: '#A3A3A3',
+          500: '#575756',  // Couleur principale
+          600: '#4F4F4E',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
         },
+        // MatriCx Brand Accent - Bleu
+        accent: {
+          50: '#F0F9FF',
+          100: '#E0F2FE',
+          200: '#BAE6FD',
+          300: '#7DD3FC',
+          400: '#38BDF8',
+          500: '#0080AF',  // Couleur principale
+          600: '#0073A1',
+          700: '#006691',
+          800: '#005A82',
+          900: '#004D73',
+        },
+        // Grays MatriCx compatibles
         gray: {
-          50: '#F8FAFC',
-          100: '#F1F5F9',
-          200: '#E2E8F0',
-          400: '#94A3B8',
-          500: '#64748B',
-          600: '#475569',
-          700: '#334155',
-          800: '#1E293B',
-          900: '#0F172A',
+          50: '#FAFAFA',
+          100: '#F4F4F4',
+          200: '#E5E5E5',
+          400: '#A3A3A3',
+          500: '#575756',  // MatriCx Gray principal
+          600: '#4F4F4E',
+          700: '#404040',
+          800: '#262626',
+          900: '#171717',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        // MatriCx Typography System
+        sans: ['Helvetica', 'Arial', 'sans-serif'],
+        display: ['Helvetica', 'Arial', 'sans-serif'],
+        body: ['Montserrat', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

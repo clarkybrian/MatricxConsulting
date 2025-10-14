@@ -300,7 +300,7 @@ const Chatbot: React.FC = () => {
       <button
         onClick={() => isOpen ? closeChatbot() : openChatbot()}
         className={`fixed bottom-[1.5rem] right-[1.5rem] w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 z-[9999] ${
-          isOpen ? 'bg-gray-600 hover:bg-gray-700' : 'bg-secondary-500 hover:bg-secondary-600'
+          isOpen ? 'bg-secondary-600 hover:bg-secondary-700' : 'bg-primary-500 hover:bg-primary-600 animate-pulse'
         }`}
         style={{ position: 'fixed' }}
       >
@@ -323,7 +323,7 @@ const Chatbot: React.FC = () => {
           }}
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-primary-600 to-secondary-500 text-white p-4 rounded-t-2xl">
+          <div className="bg-gradient-to-r from-primary-500 to-accent-500 text-white p-4 rounded-t-2xl font-primary">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <Bot className="w-6 h-6" />
@@ -344,12 +344,12 @@ const Chatbot: React.FC = () => {
               >
                 <div className={`flex items-start space-x-2 max-w-[85%] ${message.isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    message.isUser ? 'bg-primary-500' : 'bg-gray-200'
+                    message.isUser ? 'bg-primary-500' : 'bg-accent-100 border border-accent-200'
                   }`}>
                     {message.isUser ? (
                       <User className="w-5 h-5 text-white" />
                     ) : (
-                      <Bot className="w-5 h-5 text-gray-600" />
+                      <Bot className="w-5 h-5 text-accent-600" />
                     )}
                   </div>
                   <div className={`rounded-2xl px-4 py-3 ${

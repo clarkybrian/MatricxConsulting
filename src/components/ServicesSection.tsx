@@ -14,40 +14,36 @@ const ServicesSection: React.FC = () => {
 
   const services = [
     {
-      icon: <BarChart3 className="w-8 h-8" />,
+      icon: <BarChart3 className="w-10 h-10" />,
       name: t('services.advisory.name'),
       description: t('services.advisory.description'),
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      iconColor: "text-blue-600",
-      hoverColor: "hover:bg-blue-100"
+      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100",
+      iconBg: "bg-white",
+      iconColor: "text-primary-600"
     },
     {
-      icon: <Search className="w-8 h-8" />,
+      icon: <Search className="w-10 h-10" />,
       name: t('services.survey.name'),
       description: t('services.survey.description'),
-      color: "from-green-500 to-green-600", 
-      bgColor: "bg-green-50",
-      iconColor: "text-green-600",
-      hoverColor: "hover:bg-green-100"
+      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100", 
+      iconBg: "bg-white",
+      iconColor: "text-primary-600"
     },
     {
-      icon: <Settings className="w-8 h-8" />,
+      icon: <Settings className="w-10 h-10" />,
       name: t('services.technology.name'),
       description: t('services.technology.description'),
-      color: "from-purple-500 to-purple-600",
-      bgColor: "bg-purple-50",
-      iconColor: "text-purple-600",
-      hoverColor: "hover:bg-purple-100"
+      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100",
+      iconBg: "bg-white",
+      iconColor: "text-primary-600"
     },
     {
-      icon: <GraduationCap className="w-8 h-8" />,
+      icon: <GraduationCap className="w-10 h-10" />,
       name: t('services.training.name'),
       description: t('services.training.description'),
-      color: "from-orange-500 to-orange-600",
-      bgColor: "bg-orange-50", 
-      iconColor: "text-orange-600",
-      hoverColor: "hover:bg-orange-100"
+      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100", 
+      iconBg: "bg-white",
+      iconColor: "text-primary-600"
     }
   ]
 
@@ -66,43 +62,35 @@ const ServicesSection: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-2 gap-4 lg:gap-8 mb-16">
+        {/* Services MatriCx - Design élégant style Revolut */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
           {services.map((service, index) => (
-            <div
+            <div 
               key={index}
-              className={`card group cursor-pointer transform hover:scale-105 transition-all duration-500 ${service.bgColor} border-0 animate-fade-in`}
+              className="group cursor-pointer animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="relative">
-                {/* Service Icon */}
-                <div className={`inline-flex p-2 lg:p-4 rounded-2xl ${service.bgColor} ${service.iconColor} mb-3 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg scale-75 lg:scale-100`}>
+              <div className={`${service.bgColor} p-8 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100`}>
+                {/* Icône dans un cercle avec couleurs MatriCx */}
+                <div className={`${service.iconBg} ${service.iconColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm`}>
                   {service.icon}
                 </div>
-
-                {/* Service Content */}
-                <div className="space-y-2 lg:space-y-4">
-                  <h3 className="text-sm lg:text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
-                    {service.name}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed text-xs lg:text-lg">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* CTA Arrow */}
-                <div className="flex items-center justify-between mt-6">
-                  <button className="flex items-center space-x-2 text-primary-600 font-medium group-hover:text-primary-700 transition-colors duration-300">
-                    <span>{t('common.learnMore')}</span>
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </button>
-                </div>
-
-                {/* Decorative Background */}
-                <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color} opacity-10 rounded-bl-3xl -z-10`}></div>
                 
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-white bg-opacity-0 group-hover:bg-opacity-5 transition-all duration-300 rounded-2xl -z-10"></div>
+                {/* Titre avec police Helvetica */}
+                <h3 className="text-xl font-bold text-secondary-800 mb-4 font-primary">
+                  {service.name}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-secondary-600 text-sm leading-relaxed mb-6">
+                  {service.description}
+                </p>
+                
+                {/* Bouton "En savoir plus" style MatriCx */}
+                <button className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
+                  <span className="font-primary">{t('common.learnMore')}</span>
+                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
               </div>
             </div>
           ))}
