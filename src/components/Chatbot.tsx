@@ -194,9 +194,10 @@ const Chatbot: React.FC = () => {
       {/* Bouton flottant */}
       <button
         onClick={() => isOpen ? closeChatbot() : setIsOpen(true)}
-        className={`fixed bottom-4 md:bottom-6 right-4 md:right-6 w-14 md:w-16 h-14 md:h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 z-[70] ${
+        className={`fixed bottom-[1.5rem] right-[1.5rem] w-14 h-14 md:w-16 md:h-16 rounded-full shadow-2xl transition-all duration-300 transform hover:scale-110 z-[9999] ${
           isOpen ? 'bg-gray-600 hover:bg-gray-700' : 'bg-secondary-500 hover:bg-secondary-600'
         }`}
+        style={{ position: 'fixed' }}
       >
         {isOpen ? (
           <X className="w-6 md:w-8 h-6 md:h-8 text-white mx-auto" />
@@ -207,7 +208,15 @@ const Chatbot: React.FC = () => {
 
       {/* Fenêtre de chat - Responsive */}
       {isOpen && (
-        <div className="fixed bottom-[88px] md:bottom-24 right-2 md:right-6 left-4 md:left-auto w-auto md:w-[365px] h-[480px] md:h-[650px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col z-[60]">
+        <div 
+          className="fixed right-[1.5rem] left-4 md:left-auto w-auto md:w-[365px] bg-white rounded-2xl shadow-2xl border border-gray-200 flex flex-col z-[9998]"
+          style={{ 
+            position: 'fixed',
+            bottom: '5.5rem',
+            height: 'min(650px, calc(100vh - 8rem))',
+            maxHeight: 'calc(100vh - 8rem)'
+          }}
+        >
           {/* Header */}
           <div className="bg-gradient-to-r from-primary-600 to-secondary-500 text-white p-4 rounded-t-2xl">
             <div className="flex items-center space-x-3">
