@@ -11,6 +11,7 @@ export default defineConfig({
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'robots.txt'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,jpg,svg,woff,woff2}'],
+        maximumFileSizeToCacheInBytes: 50 * 1024 * 1024, // 50 MB au lieu de 2 MB par défaut
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
