@@ -35,9 +35,10 @@
    - Sélectionner le repo `MatricxConsulting`
 
 3. **Configuration automatique**
-   - Build command: `npm run build:netlify` (configuré dans netlify.toml)
-   - Publish directory: `dist` (configuré dans netlify.toml)
-   - Node version: `18` (configuré dans netlify.toml)
+   - Build command: `npm run build` (configuré dans netlify.toml)
+   - Publish directory: `dist` (configuré dans netlify.toml)  
+   - Node version: `20` (configuré dans netlify.toml)
+   - NPM flags: `--include=dev` (pour installer TypeScript)
 
 #### Méthode B : Drag & Drop
 1. **Build local**
@@ -108,14 +109,17 @@ Avec Git connecté :
 
 ### Build échoue
 ```bash
-# Vérifier le build en local avec la commande Netlify
-npm run build:netlify
+# Vérifier le build en local
+npm run build
 
-# Si erreur TypeScript
+# Vérifier TypeScript
+npx tsc --version
+
+# Si erreur TypeScript, vérifier les types
 npm run lint
 
-# Si erreur "tsc not found" 
-npx tsc --version
+# Vérifier que TypeScript est installé
+npm list typescript
 ```
 
 ### Erreur 404 sur les routes

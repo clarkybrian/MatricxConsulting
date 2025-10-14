@@ -1,12 +1,13 @@
 [build]
-  # Commande de build optimisée pour Netlify
-  command = "npm run build:netlify"
+  # Commande de build avec TypeScript check propre
+  command = "npm run build"
   
   # Dossier de publication (sortie de Vite)
   publish = "dist"
-  
-  # Variables d'environnement pour le build
-  environment = { NODE_VERSION = "18", NPM_FLAGS = "--legacy-peer-deps" }
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--include=dev"
 
 [build.processing]
   # Optimisation automatique des images
