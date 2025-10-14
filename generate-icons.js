@@ -6,8 +6,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const inputImage = path.join(__dirname, 'src', 'images', 'logomatricx.png');
-const faviconImage = path.join(__dirname, 'src', 'images', 'iconelogo.png'); // Icône spéciale pour favicon
+const inputImage = path.join(__dirname, 'src', 'images', 'ongleticone.png'); // Nouvelle icône pour toutes les icônes
+const faviconImage = path.join(__dirname, 'src', 'images', 'ongleticone.png'); // Icône spéciale pour navigateur et PWA
 const outputDir = path.join(__dirname, 'public');
 
 // Créer le dossier public s'il n'existe pas

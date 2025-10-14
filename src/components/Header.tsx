@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import { Menu, X, Mail, Languages } from 'lucide-react'
-import logoMatricx from '../images/logomatricx.png'
+import logoMatricx from '../images/matricxlogo.png'
 
 const Header: React.FC = () => {
   const { t, currentLanguage, changeLanguage } = useTranslation()
