@@ -46,19 +46,19 @@ const Contact: React.FC = () => {
         <div className="max-w-2xl mx-auto text-center py-16">
           <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            {t('contact.form.success')}
+            {t('contact.page.form.success')}
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            {t('contact.form.successDescription', { name: formData.name, hours: '24' })}
+            {t('contact.page.form.successDescription', { name: formData.name, hours: '24' })}
           </p>
           <div className="bg-white rounded-xl p-6 shadow-lg">
-            <h3 className="font-semibold text-gray-900 mb-3">{t('contact.form.scheduleText')}</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">{t('contact.page.form.scheduleText')}</h3>
             <button 
               onClick={openCalendly}
               className="btn-primary inline-flex items-center space-x-2 group"
             >
               <Calendar size={20} />
-              <span>{t('contact.form.scheduleButton')}</span>
+              <span>{t('contact.page.form.scheduleButton')}</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
             </button>
           </div>
@@ -71,7 +71,7 @@ const Contact: React.FC = () => {
         {/* Informations de contact */}
         <div className="space-y-8">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('contact.info.title')}</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">{t('contact.page.info.title')}</h2>
             
             {/* Téléphone */}
             <div className="flex items-start space-x-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4">
@@ -79,8 +79,8 @@ const Contact: React.FC = () => {
                 <Phone className="w-6 h-6 text-primary-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.info.phone')}</h3>
-                <p className="text-gray-600 mb-2">{t('contact.info.phoneDescription')}</p>
+                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.page.info.phone')}</h3>
+                <p className="text-gray-600 mb-2">{t('contact.page.info.phoneDescription')}</p>
                 <a href="tel:+237677810120" className="text-primary-600 font-medium hover:text-primary-700">
                   +237 677 810 120
                 </a>
@@ -93,8 +93,8 @@ const Contact: React.FC = () => {
                 <Mail className="w-6 h-6 text-primary-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.info.email')}</h3>
-                <p className="text-gray-600 mb-2">{t('contact.info.emailDescription')}</p>
+                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.page.info.email')}</h3>
+                <p className="text-gray-600 mb-2">{t('contact.page.info.emailDescription')}</p>
                 <a href="mailto:contact@matricxconsulting.com" className="text-primary-600 font-medium hover:text-primary-700">
                   contact@matricxconsulting.com
                 </a>
@@ -107,8 +107,8 @@ const Contact: React.FC = () => {
                 <MapPin className="w-6 h-6 text-primary-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.info.address')}</h3>
-                <p className="text-gray-600 mb-2">{t('contact.info.addressDescription')}</p>
+                <h3 className="font-semibold text-gray-900 mb-1">{t('contact.page.info.address')}</h3>
+                <p className="text-gray-600 mb-2">{t('contact.page.info.addressDescription')}</p>
                 <p className="text-primary-600 font-medium">
                   Douala, Makepe BM<br />
                   BP 12777, Cameroun
@@ -121,20 +121,20 @@ const Contact: React.FC = () => {
           <div className="bg-gradient-to-r from-primary-600 to-secondary-500 text-white p-6 rounded-xl">
             <div className="flex items-center space-x-3 mb-4">
               <Clock className="w-6 h-6" />
-              <h3 className="font-semibold">{t('contact.info.hours')}</h3>
+              <h3 className="font-semibold">{t('contact.page.info.hours')}</h3>
             </div>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
-                <span>{t('contact.info.mondayFriday')}</span>
+                <span>{t('contact.page.info.mondayFriday')}</span>
                 <span>8h00 - 18h00</span>
               </div>
               <div className="flex justify-between">
-                <span>{t('contact.info.saturday')}</span>
+                <span>{t('contact.page.info.saturday')}</span>
                 <span>9h00 - 13h00</span>
               </div>
               <div className="flex justify-between opacity-75">
-                <span>{t('contact.info.sunday')}</span>
-                <span>{t('contact.info.closed')}</span>
+                <span>{t('contact.page.info.sunday')}</span>
+                <span>{t('contact.page.info.closed')}</span>
               </div>
             </div>
           </div>
@@ -145,10 +145,10 @@ const Contact: React.FC = () => {
           <div className="bg-white rounded-2xl shadow-xl p-8">
             <div className="mb-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t('contact.form.title')}
+                {t('contact.page.form.title')}
               </h2>
               <p className="text-gray-600">
-                {t('contact.form.formDescription')}
+                {t('contact.page.form.formDescription')}
               </p>
             </div>
 
@@ -156,7 +156,7 @@ const Contact: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.name')} *
+                    {t('contact.page.form.name')} *
                   </label>
                   <input
                     type="text"
@@ -166,13 +166,13 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                    placeholder={t('contact.form.namePlaceholder')}
+                    placeholder={t('contact.page.form.namePlaceholder')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.email')} *
+                    {t('contact.page.form.email')} *
                   </label>
                   <input
                     type="email"
@@ -182,7 +182,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                    placeholder={t('contact.form.emailPlaceholder')}
+                    placeholder={t('contact.page.form.emailPlaceholder')}
                   />
                 </div>
               </div>
@@ -190,7 +190,7 @@ const Contact: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.company')} *
+                    {t('contact.page.form.company')} *
                   </label>
                   <input
                     type="text"
@@ -200,13 +200,13 @@ const Contact: React.FC = () => {
                     value={formData.company}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                    placeholder={t('contact.form.companyPlaceholder')}
+                    placeholder={t('contact.page.form.companyPlaceholder')}
                   />
                 </div>
                 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    {t('contact.form.phone')} *
+                    {t('contact.page.form.phone')} *
                   </label>
                   <input
                     type="tel"
@@ -216,14 +216,14 @@ const Contact: React.FC = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-                    placeholder={t('contact.form.phonePlaceholder')}
+                    placeholder={t('contact.page.form.phonePlaceholder')}
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.form.message')} *
+                  {t('contact.page.form.message')} *
                 </label>
                 <textarea
                   id="message"
@@ -233,7 +233,7 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder={t('contact.form.messagePlaceholder')}
+                  placeholder={t('contact.page.form.messagePlaceholder')}
                 />
               </div>
 
@@ -246,12 +246,12 @@ const Contact: React.FC = () => {
                   {isLoading ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>{t('contact.form.sending')}</span>
+                      <span>{t('contact.page.form.sending')}</span>
                     </>
                   ) : (
                     <>
                       <Send size={20} />
-                      <span>{t('contact.form.send')}</span>
+                      <span>{t('contact.page.form.send')}</span>
                       <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
                     </>
                   )}
@@ -263,7 +263,7 @@ const Contact: React.FC = () => {
                   className="flex-1 inline-flex items-center justify-center space-x-2 px-6 py-3 border-2 border-primary-300 text-primary-600 font-medium rounded-xl hover:bg-primary-50 transition-all duration-300 group"
                 >
                   <Calendar size={20} />
-                  <span>{t('contact.form.orSchedule')}</span>
+                  <span>{t('contact.page.form.orSchedule')}</span>
                 </button>
               </div>
             </form>
@@ -273,7 +273,7 @@ const Contact: React.FC = () => {
               <div className="flex items-center space-x-2 text-green-700">
                 <CheckCircle size={18} />
                 <span className="text-sm font-medium">
-                  {t('contact.form.responseGuarantee')}
+                  {t('contact.page.form.responseGuarantee')}
                 </span>
               </div>
             </div>
