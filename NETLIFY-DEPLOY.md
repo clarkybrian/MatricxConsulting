@@ -11,7 +11,16 @@
 
 ### 2️⃣ **Déploiement sur Netlify**
 
-#### Méthode A : Git (Recommandée)
+#### Méthode A : Script automatique (Recommandé)
+```powershell
+# Windows PowerShell
+.\deploy.ps1
+
+# Ou Git Bash/Linux
+./deploy.sh
+```
+
+#### Méthode B : Manuel Git
 1. **Push votre code sur GitHub/GitLab**
    ```bash
    git add .
@@ -26,8 +35,8 @@
    - Sélectionner le repo `MatricxConsulting`
 
 3. **Configuration automatique**
-   - Build command: `npm run build` (détecté auto)
-   - Publish directory: `dist` (détecté auto)
+   - Build command: `npm run build:netlify` (configuré dans netlify.toml)
+   - Publish directory: `dist` (configuré dans netlify.toml)
    - Node version: `18` (configuré dans netlify.toml)
 
 #### Méthode B : Drag & Drop
@@ -99,11 +108,14 @@ Avec Git connecté :
 
 ### Build échoue
 ```bash
-# Vérifier le build en local
-npm run build
+# Vérifier le build en local avec la commande Netlify
+npm run build:netlify
 
 # Si erreur TypeScript
 npm run lint
+
+# Si erreur "tsc not found" 
+npx tsc --version
 ```
 
 ### Erreur 404 sur les routes
