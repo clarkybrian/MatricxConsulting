@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, User, Building, Briefcase, Award, Monitor, Store, Users, Leaf, Lightbulb, BarChart, Settings, GraduationCap } from 'lucide-react'
 import logoMatricx from '../images/matricxlogo.png'
+import leadershipImage from '../images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg'
+import innovationImage from '../images/blog/vert1.jpg'
 
 const Header: React.FC = () => {
   const { t, currentLanguage, changeLanguage } = useTranslation()
@@ -136,7 +138,7 @@ const Header: React.FC = () => {
                           <div className="flex items-start space-x-4">
                             <div className="w-24 h-18 rounded-lg flex-shrink-0 overflow-hidden">
                               <img 
-                                src="/src/images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg" 
+                                src={leadershipImage}
                                 alt="Leadership Africain" 
                                 className="w-full h-full object-cover object-center"
                               />
@@ -166,7 +168,7 @@ const Header: React.FC = () => {
                           <div className="flex items-start space-x-4">
                             <div className="w-24 h-18 rounded-lg flex-shrink-0 overflow-hidden">
                               <img 
-                                src="/src/images/blog/vert1.jpg" 
+                                src={innovationImage} 
                                 alt="Innovation Afrique" 
                                 className="w-full h-full object-cover object-center"
                               />
@@ -269,7 +271,7 @@ const Header: React.FC = () => {
                           <div className="flex items-start space-x-4">
                             <div className="w-24 h-18 rounded-lg flex-shrink-0 overflow-hidden">
                               <img 
-                                src="/src/images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg" 
+                                src={leadershipImage}
                                 alt="Leadership Africain" 
                                 className="w-full h-full object-cover object-center"
                               />
@@ -299,7 +301,7 @@ const Header: React.FC = () => {
                           <div className="flex items-start space-x-4">
                             <div className="w-24 h-18 rounded-lg flex-shrink-0 overflow-hidden">
                               <img 
-                                src="/src/images/blog/vert1.jpg" 
+                                src={innovationImage} 
                                 alt="Innovation Afrique" 
                                 className="w-full h-full object-cover object-center"
                               />
