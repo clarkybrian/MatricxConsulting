@@ -120,6 +120,34 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Animation pour le carrousel de partenaires */
+@keyframes partners-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.partners-scroll-infinite {
+  animation: partners-scroll 30s linear infinite;
+  animation-fill-mode: both;
+  will-change: transform;
+}
+
+.animation-paused {
+  animation: partners-scroll 30s linear infinite;
+  animation-play-state: paused;
+  animation-fill-mode: both;
+  will-change: transform;
+}
+
+/* Classe utilitaire pour le zoom à 130% */
+.hover\:scale-130:hover {
+  transform: scale(1.3);
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

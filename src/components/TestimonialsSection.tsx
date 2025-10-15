@@ -157,20 +157,9 @@ const TestimonialsSection: React.FC = () => {
                     ))}
                   </div>
 
-                  {/* Author avec vraie photo */}
+                  {/* Author avec initiales centrées */}
                   <div className="flex items-center space-x-3">
-                    <img 
-                      src={`https://images.unsplash.com/photo-${testimonial.photoId}?w=48&h=48&fit=crop&crop=face`}
-                      alt={testimonial.author}
-                      className="w-12 h-12 rounded-full object-cover"
-                      onError={(e) => {
-                        // Fallback vers initiales si l'image ne charge pas
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="w-12 h-12 bg-primary-600 rounded-full items-center justify-center text-white font-bold text-sm hidden">
+                    <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
                       {testimonial.avatar}
                     </div>
                     <div>

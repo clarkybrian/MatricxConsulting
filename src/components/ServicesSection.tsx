@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import { 
   BarChart3, 
@@ -14,36 +15,40 @@ const ServicesSection: React.FC = () => {
 
   const services = [
     {
-      icon: <BarChart3 className="w-10 h-10" />,
+      icon: <BarChart3 className="w-full h-full" />,
       name: t('services.advisory.name'),
       description: t('services.advisory.description'),
-      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100",
-      iconBg: "bg-white",
-      iconColor: "text-primary-600"
+      bgColor: "bg-yellow-400",
+      iconBg: "bg-yellow-500/20",
+      iconColor: "text-gray-800",
+      link: "/services/advisory"
     },
     {
-      icon: <Search className="w-10 h-10" />,
+      icon: <Search className="w-full h-full" />,
       name: t('services.survey.name'),
       description: t('services.survey.description'),
-      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100", 
-      iconBg: "bg-white",
-      iconColor: "text-primary-600"
+      bgColor: "bg-yellow-400", 
+      iconBg: "bg-yellow-500/20",
+      iconColor: "text-gray-800",
+      link: "/services/survey"
     },
     {
-      icon: <Settings className="w-10 h-10" />,
+      icon: <Settings className="w-full h-full" />,
       name: t('services.technology.name'),
       description: t('services.technology.description'),
-      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100",
-      iconBg: "bg-white",
-      iconColor: "text-primary-600"
+      bgColor: "bg-yellow-400",
+      iconBg: "bg-yellow-500/20",
+      iconColor: "text-gray-800",
+      link: "/services/technology"
     },
     {
-      icon: <GraduationCap className="w-10 h-10" />,
+      icon: <GraduationCap className="w-full h-full" />,
       name: t('services.training.name'),
       description: t('services.training.description'),
-      bgColor: "bg-gradient-to-br from-primary-50 to-primary-100", 
-      iconBg: "bg-white",
-      iconColor: "text-primary-600"
+      bgColor: "bg-yellow-400", 
+      iconBg: "bg-yellow-500/20",
+      iconColor: "text-gray-800",
+      link: "/services/training"
     }
   ]
 
@@ -63,34 +68,39 @@ const ServicesSection: React.FC = () => {
         </div>
 
         {/* Services MatriCx - Design élégant style Revolut */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 lg:gap-6 mb-16">
           {services.map((service, index) => (
             <div 
               key={index}
               className="group cursor-pointer animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className={`${service.bgColor} p-8 rounded-3xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100`}>
+              <div className={`${service.bgColor} p-4 lg:p-8 rounded-2xl lg:rounded-3xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100`}>
                 {/* Icône dans un cercle avec couleurs MatriCx */}
-                <div className={`${service.iconBg} ${service.iconColor} w-16 h-16 rounded-2xl flex items-center justify-center mb-6 shadow-sm`}>
-                  {service.icon}
+                <div className={`${service.iconBg} ${service.iconColor} w-10 h-10 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 lg:mb-6 shadow-sm`}>
+                  <div className="w-6 h-6 lg:w-10 lg:h-10">
+                    {service.icon}
+                  </div>
                 </div>
                 
                 {/* Titre avec police Helvetica */}
-                <h3 className="text-xl font-bold text-secondary-800 mb-4 font-primary">
+                <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-2 lg:mb-4 font-primary">
                   {service.name}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-secondary-600 text-sm leading-relaxed mb-6">
+                <p className="text-gray-700 text-xs lg:text-sm leading-relaxed mb-3 lg:mb-6">
                   {service.description}
                 </p>
                 
                 {/* Bouton "En savoir plus" style MatriCx */}
-                <button className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm group-hover:translate-x-1 transition-all duration-300">
+                <Link 
+                  to={service.link}
+                  className="inline-flex items-center bg-black/10 hover:bg-black/20 text-gray-900 hover:text-gray-800 font-semibold text-xs lg:text-sm px-2 py-1 lg:px-4 lg:py-2 rounded-md lg:rounded-lg group-hover:translate-x-1 transition-all duration-300 backdrop-blur-sm"
+                >
                   <span className="font-primary">{t('common.learnMore')}</span>
-                  <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+                  <ArrowRight size={12} className="ml-1 lg:ml-2 group-hover:translate-x-1 transition-transform duration-300 lg:w-4 lg:h-4" />
+                </Link>
               </div>
             </div>
           ))}

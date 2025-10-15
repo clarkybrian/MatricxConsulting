@@ -289,37 +289,48 @@ const Contact: React.FC = () => {
           <ContactForm />
 
           {/* Localisation */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 mt-16">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">{t('contact.page.location')}</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Informations de localisation */}
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <MapPin className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Adresse complète</h4>
-                    <p className="text-gray-600">
-                      Makepe Missoke<br />
-                      Douala, Cameroun<br />
-                      BP 12777
-                    </p>
+          <div className="bg-white rounded-2xl shadow-2xl p-8 mt-16 border border-gray-100">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">{t('contact.page.location')}</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              {/* Informations de localisation - Centrées */}
+              <div className="space-y-6 text-center lg:text-left">
+                <div className="flex flex-col items-center lg:items-start space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                      <MapPin className="w-5 h-5 text-primary-600" />
+                    </div>
+                    <div className="text-left">
+                      <h4 className="font-semibold text-gray-900 mb-1">Adresse complète</h4>
+                    </div>
+                  </div>
+                  <div className="text-gray-600 leading-relaxed">
+                    <p>Makepe Missoke</p>
+                    <p>Douala, Cameroun</p>
+                    <p>BP 12777</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Phone className="w-5 h-5 text-primary-600 mt-1 flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-gray-900">Téléphone</h4>
-                    <a href="tel:+237677810120" className="text-primary-600 hover:text-primary-700">
-                      +237 677 810 120
-                    </a>
+                
+                <div className="flex flex-col items-center lg:items-start space-y-2">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
+                      <Phone className="w-5 h-5 text-primary-600" />
+                    </div>
+                    <div className="text-left">
+                      <h4 className="font-semibold text-gray-900 mb-1">Téléphone</h4>
+                    </div>
                   </div>
+                  <a href="tel:+237677810120" className="text-primary-600 hover:text-primary-700 font-medium">
+                    +237 677 810 120
+                  </a>
                 </div>
-                <div className="mt-6">
+
+                {/* Bouton Google Maps - Centré */}
+                <div className="flex justify-center lg:justify-start pt-4">
                   <a
                     href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary inline-flex items-center space-x-2"
+                    className="btn-primary inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                   >
                     <MapPin size={16} />
                     <span>Voir sur Google Maps</span>
@@ -328,20 +339,24 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              {/* Carte alternative avec lien direct */}
-              <div className="w-full h-64 lg:h-80 bg-gradient-to-br from-primary-100 to-primary-200 rounded-lg flex flex-col items-center justify-center text-center p-6">
-                <MapPin className="w-16 h-16 text-primary-600 mb-4" />
-                <h4 className="text-lg font-semibold text-gray-900 mb-2">
+              {/* Carte alternative avec ombre uniforme */}
+              <div className="w-full h-64 lg:h-80 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl shadow-lg border border-yellow-200 flex flex-col items-center justify-center text-center p-8">
+                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4">
+                  <MapPin className="w-8 h-8 text-primary-600" />
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-2">
                   Notre bureau à Douala
                 </h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-700 mb-6 font-medium">
                   Makepe Missoke, quartier d'affaires
                 </p>
+                
+                {/* Bouton itinéraire - Centré et aligné */}
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=Makepe+Missoke,+Douala,+Cameroun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary inline-flex items-center space-x-2"
+                  className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg transform hover:scale-105"
                 >
                   <span>Obtenir l'itinéraire</span>
                   <ArrowRight size={16} />

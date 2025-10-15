@@ -2,11 +2,28 @@
 export const translations = {
   fr: {
     nav: {
-      home: 'ACCUEIL',
-      about: 'À PROPOS DE NOUS',
-      services: 'NOS SERVICES',
-      contact: 'CONTACT',
-      blog: 'BLOG'
+      home: 'Accueil',
+      about: 'À propos de nous',
+      services: 'Nos services',
+      contact: 'Contact',
+      blog: 'Blog',
+      dropdown: {
+        advisory: 'MatriCx Advisory',
+        survey: 'MatriCx Survey',
+        technology: 'MatriCx Technology',
+        training: 'MatriCx Training'
+      },
+      aboutDropdown: {
+        founder: 'Fondateur',
+        company: 'Entreprise',
+        careers: 'Carrières',
+        experience: 'Expérience',
+        media: 'Médias',
+        franchise: 'Franchise',
+        partners: 'Partenaires',
+        sustainability: 'Durabilité',
+        featuredArticles: 'Articles en vedette'
+      }
     },
     hero: {
       title: "ET SI L'EXPÉRIENCE CLIENT N'ÉTAIT QU'UN BESOIN FONDAMENTAL ?",
@@ -97,21 +114,48 @@ export const translations = {
     services: {
       header: "SERVICES",
       title: "NOS DOMAINES D'EXPERTISE",
+      subtitle: "Découvrez nos quatre domaines d'expertise qui vous permettront de transformer votre expérience client en avantage concurrentiel durable.",
+      ourExpertises: "Nos expertises :",
+      learnMore: "En savoir plus",
       advisory: {
         name: "MatriCx Advisory",
-        description: "Conseil, pilotage, amélioration continue, optimisation, stratégie CX & financière..."
+        description: "Conseil, pilotage, amélioration continue, optimisation, stratégie CX & financière...",
+        features: [
+          "Conseil stratégique",
+          "Pilotage de projets",
+          "Amélioration continue",
+          "Optimisation processus"
+        ]
       },
       survey: {
         name: "MatriCx Survey", 
-        description: "Étude & analyses, connaissance client, stratégie de marché / marque..."
+        description: "Étude & analyses, connaissance client, stratégie de marché / marque...",
+        features: [
+          "Études de marché",
+          "Analyses concurrentielles",
+          "Connaissance client",
+          "Stratégie de marque"
+        ]
       },
       technology: {
         name: "MatriCx Technology",
-        description: "Outils de la relation client, innovation, CRM transformation digitale..."
+        description: "Outils de la relation client, innovation, CRM transformation digitale...",
+        features: [
+          "Outils CRM",
+          "Transformation digitale",
+          "Innovation technologique",
+          "Solutions sur mesure"
+        ]
       },
       training: {
         name: "MatriCx Training",
-        description: "Leader CX, formation sur mesure, certificats CX, culture client..."
+        description: "Leader CX, formation sur mesure, certificats CX, culture client...",
+        features: [
+          "Formation sur mesure",
+          "Certificats CX",
+          "Culture client",
+          "Leadership CX"
+        ]
       }
     },
     testimonials: {
@@ -221,6 +265,7 @@ export const translations = {
       company: "MatriCx CONSULTING",
       description: "Cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle.",
       quickLinks: "Liens rapides",
+      ourServices: "Nos Services",
       followUs: "Suivez-nous",
       contactInfo: "Informations de contact",
       madeWith: "Fait avec",
@@ -264,15 +309,56 @@ export const translations = {
       getQuote: "Demander un devis",
       contactUs: "Nous contacter",
       learnMore: "En savoir plus"
+    },
+    blog: {
+      title: "Blog MatriCx",
+      subtitle: "Actualités et insights sur l'expérience client",
+      articles: [
+        {
+          id: 1,
+          title: "L'expérience client dans le secteur de la santé : Un enjeu critique",
+          excerpt: "Découvrez comment l'expérience client (CX) transforme les systèmes de santé en éliminant les points de douleur et en améliorant la satisfaction des patients.",
+          date: "15 octobre 2025",
+          category: "Santé",
+          readTime: "5 min",
+          image: "healthcare-cx"
+        },
+        {
+          id: 2,
+          title: "Tendances de la transformation digitale (DT) en 2024-2025",
+          excerpt: "Cet article explore les principales tendances de 2024, non pas des prédictions, mais des changements pratiques qui se produisent à travers les modèles CX, EX et opérationnels au Moyen-Orient, en Afrique et dans le monde.",
+          date: "10 octobre 2025",
+          category: "Digital",
+          readTime: "7 min",
+          image: "digital-transformation"
+        }
+      ]
     }
   },
   en: {
     nav: {
-      home: 'HOME',
-      about: 'ABOUT US',
-      services: 'OUR SERVICES',
-      contact: 'CONTACT',
-      blog: 'BLOG'
+      home: 'Home',
+      about: 'About us',
+      services: 'Our services',
+      contact: 'Contact',
+      blog: 'Blog',
+      dropdown: {
+        advisory: 'MatriCx Advisory',
+        survey: 'MatriCx Survey',
+        technology: 'MatriCx Technology',
+        training: 'MatriCx Training'
+      },
+      aboutDropdown: {
+        founder: 'Founder',
+        company: 'Company',
+        careers: 'Careers',
+        experience: 'Experience',
+        media: 'Media',
+        franchise: 'Franchise',
+        partners: 'Partners',
+        sustainability: 'Sustainability',
+        featuredArticles: 'Featured Articles'
+      }
     },
     hero: {
       title: "WHAT IF CUSTOMER EXPERIENCE WAS JUST A FUNDAMENTAL NEED?",
@@ -363,21 +449,48 @@ export const translations = {
     services: {
       header: "SERVICES",
       title: "OUR AREAS OF EXPERTISE",
+      subtitle: "Discover our four areas of expertise that will allow you to transform your customer experience into a sustainable competitive advantage.",
+      ourExpertises: "Our expertise:",
+      learnMore: "Learn more",
       advisory: {
         name: "MatriCx Advisory",
-        description: "Consulting, management, continuous improvement, optimization, CX & financial strategy..."
+        description: "Consulting, management, continuous improvement, optimization, CX & financial strategy...",
+        features: [
+          "Strategic consulting",
+          "Project management",
+          "Continuous improvement",
+          "Process optimization"
+        ]
       },
       survey: {
         name: "MatriCx Survey",
-        description: "Studies & analysis, customer knowledge, market / brand strategy..."
+        description: "Studies & analysis, customer knowledge, market / brand strategy...",
+        features: [
+          "Market research",
+          "Competitive analysis",
+          "Customer knowledge",
+          "Brand strategy"
+        ]
       },
       technology: {
         name: "MatriCx Technology", 
-        description: "Customer relationship tools, innovation, CRM digital transformation..."
+        description: "Customer relationship tools, innovation, CRM digital transformation...",
+        features: [
+          "CRM tools",
+          "Digital transformation",
+          "Technological innovation",
+          "Custom solutions"
+        ]
       },
       training: {
         name: "MatriCx Training",
-        description: "CX Leader, customized training, CX certificates, customer culture..."
+        description: "CX Leader, customized training, CX certificates, customer culture...",
+        features: [
+          "Custom training",
+          "CX certificates",
+          "Customer culture",
+          "CX Leadership"
+        ]
       }
     },
     testimonials: {
@@ -487,6 +600,7 @@ export const translations = {
       company: "MatriCx CONSULTING",
       description: "Consulting firm specialized in strategy & finance, organizational transformation and operational excellence.",
       quickLinks: "Quick Links",
+      ourServices: "Our Services",
       followUs: "Follow Us",
       contactInfo: "Contact Information",
       madeWith: "Made with",
@@ -530,6 +644,30 @@ export const translations = {
       getQuote: "Get a quote",
       contactUs: "Contact us",
       learnMore: "Learn more"
+    },
+    blog: {
+      title: "MatriCx Blog",
+      subtitle: "News and insights on customer experience",
+      articles: [
+        {
+          id: 1,
+          title: "Customer Experience (CX) in Healthcare: A Critical Challenge",
+          excerpt: "Discover how Customer Experience (CX) is transforming healthcare systems by eliminating pain points and improving patient satisfaction.",
+          date: "October 15, 2025",
+          category: "Healthcare",
+          readTime: "5 min",
+          image: "healthcare-cx"
+        },
+        {
+          id: 2,
+          title: "Digital Transformation (DT) Trends in 2024-2025",
+          excerpt: "This article explores the leading DT trends of 2024—not predictions, but practical shifts happening now across CX, EX, and operational models in the Middle East, Africa, and globally.",
+          date: "October 10, 2025",
+          category: "Digital",
+          readTime: "7 min",
+          image: "digital-transformation"
+        }
+      ]
     }
   }
 }

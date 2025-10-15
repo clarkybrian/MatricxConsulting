@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
 
           {/* Services MatriCx */}
           <div className="space-y-6">
-            <h4 className="font-semibold text-lg text-white font-primary">Nos Services</h4>
+            <h4 className="font-semibold text-lg text-white font-primary">{t('footer.ourServices')}</h4>
             <nav className="space-y-3">
               <a href="#advisory" className="block text-gray-300 hover:text-accent-300 transition-colors duration-300 font-secondary">
                 MatriCx Advisory
