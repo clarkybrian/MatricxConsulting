@@ -6,79 +6,95 @@ interface AnimatedTextProps {
   className?: string
 }
 
-const AnimatedText: React.FC<AnimatedTextProps> = ({ baseText, animatedWords, className = '' }) => {
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState('')
-  const [isTyping, setIsTyping] = useState(true)
-  const [showCursor, setShowCursor] = useState(true)
+const AnimatedText: React.FC<AnimatedTextProps> = ({ baseText, animatedWords = [], className = '' }) => {
+  // Modifier l'ordre des mots pour finir par: concurrentiel, stratégique, business
+  const orderedWords = ['concurrentiel', 'stratégique', 'business'];
+  
+  // Utilisons les mots animés fournis s'ils existent, sinon nos valeurs par défaut
+  const words = animatedWords.length > 0 ? animatedWords : orderedWords;
+  
+  const [currentWord, setCurrentWord] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [phase, setPhase] = useState<'typing' | 'showing' | 'deleting' | 'pausing'>('typing');
 
-  // Réinitialiser l'animation quand les mots changent (changement de langue)
   useEffect(() => {
-    setCurrentWordIndex(0)
-    setDisplayedText('')
-    setIsTyping(true)
-  }, [animatedWords])
+    // Réinitialiser l'animation quand les mots changent
+    setCurrentWord('');
+    setWordIndex(0);
+    setPhase('typing');
+  }, [animatedWords]);
 
   useEffect(() => {
-    const currentWord = animatedWords[currentWordIndex]
-    
-    if (isTyping) {
-      // Animation de frappe (écriture)
-      if (displayedText.length < currentWord.length) {
-        const timer = setTimeout(() => {
-          setDisplayedText(currentWord.slice(0, displayedText.length + 1))
-        }, 100) // Vitesse de frappe (gardée telle quelle)
-        return () => clearTimeout(timer)
-      } else {
-        // Mot complètement écrit, attendre puis commencer à effacer
-        const timer = setTimeout(() => {
-          setIsTyping(false)
-        }, 2000) // Temps d'affichage du mot complet
-        return () => clearTimeout(timer)
-      }
-    } else {
-      // Animation d'effacement
-      if (displayedText.length > 0) {
-        const timer = setTimeout(() => {
-          setDisplayedText(displayedText.slice(0, -1))
-        }, 40) // Vitesse d'effacement (2x plus rapide : 80ms -> 40ms)
-        return () => clearTimeout(timer)
-      } else {
-        // Mot complètement effacé, passer au suivant
-        setCurrentWordIndex((prev) => (prev + 1) % animatedWords.length)
-        setIsTyping(true)
-      }
+    if (words.length === 0) return;
+
+    let timer: ReturnType<typeof setTimeout>;
+
+    switch (phase) {
+      case 'typing':
+        // Apparition du mot complet
+        timer = setTimeout(() => {
+          setCurrentWord(words[wordIndex]);
+          setPhase('showing');
+        }, 300);
+        break;
+      
+      case 'showing':
+        // Afficher le mot pendant 2 secondes
+        timer = setTimeout(() => {
+          setPhase('deleting');
+        }, 2000);
+        break;
+      
+      case 'deleting':
+        // Supprimer le mot complet
+        timer = setTimeout(() => {
+          setCurrentWord('');
+          setPhase('pausing');
+        }, 300);
+        break;
+      
+      case 'pausing':
+        // Pause avant de passer au mot suivant
+        timer = setTimeout(() => {
+          setWordIndex((prev) => (prev + 1) % words.length);
+          setPhase('typing');
+        }, 500);
+        break;
     }
-  }, [displayedText, isTyping, currentWordIndex, animatedWords])
 
-  // Animation du curseur
+    return () => clearTimeout(timer);
+  }, [phase, wordIndex, words]);
+
+  // Effet pour le curseur clignotant
   useEffect(() => {
     const cursorInterval = setInterval(() => {
-      setShowCursor(prev => !prev)
-    }, 500) // Clignote toutes les 500ms
+      setShowCursor(prev => !prev);
+    }, 500);
     
-    return () => clearInterval(cursorInterval)
-  }, [])
+    return () => clearInterval(cursorInterval);
+  }, []);
 
   return (
     <span className={className}>
       {baseText}
       <span 
-        className="inline-block min-w-fit"
+        className="inline-block min-w-[2rem]"
         style={{ 
-          background: 'linear-gradient(135deg, #2563EB, #F59E0B)',
+          background: 'linear-gradient(90deg, #F59E0B, #2563EB)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           fontWeight: 'bold'
         }}
       >
-        {displayedText}
+        {currentWord}
         <span 
-          className={`inline-block w-1 h-0.5 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
+          className={`inline-block w-1 ml-1 ${showCursor ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
-            backgroundColor: '#2563EB',
-            transform: 'translateY(-0.2em)',
+            height: '1.2em',
+            backgroundColor: '#F59E0B',
+            transform: 'translateY(0.1em)',
             transition: 'opacity 0.1s'
           }}
         />

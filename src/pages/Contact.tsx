@@ -290,47 +290,45 @@ const Contact: React.FC = () => {
 
           {/* Localisation */}
           <div className="bg-white rounded-2xl shadow-2xl p-8 mt-16 border border-gray-100">
-            <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">{t('contact.page.location')}</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-8 text-center">{t('contact.page.location')}</h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              {/* Informations de localisation - Centrées */}
-              <div className="space-y-6 text-center lg:text-left">
-                <div className="flex flex-col items-center lg:items-start space-y-2">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                      <MapPin className="w-5 h-5 text-primary-600" />
+              {/* Informations de localisation - Avec icônes alignées */}
+              <div className="flex flex-col items-start space-y-8 mx-auto lg:ml-20 pl-6">
+                <div className="w-full">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                      <MapPin className="w-6 h-6 text-yellow-600" />
                     </div>
-                    <div className="text-left">
-                      <h4 className="font-semibold text-gray-900 mb-1">Adresse complète</h4>
-                    </div>
+                    <h4 className="font-semibold text-gray-900 text-lg">Adresse complète</h4>
                   </div>
-                  <div className="text-gray-600 leading-relaxed">
+                  <div className="text-gray-600 leading-relaxed mt-3 ml-16">
                     <p>Makepe Missoke</p>
                     <p>Douala, Cameroun</p>
                     <p>BP 12777</p>
                   </div>
                 </div>
                 
-                <div className="flex flex-col items-center lg:items-start space-y-2">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
-                      <Phone className="w-5 h-5 text-primary-600" />
+                <div className="w-full">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                      <Phone className="w-6 h-6 text-yellow-600" />
                     </div>
-                    <div className="text-left">
-                      <h4 className="font-semibold text-gray-900 mb-1">Téléphone</h4>
-                    </div>
+                    <h4 className="font-semibold text-gray-900 text-lg">Téléphone</h4>
                   </div>
-                  <a href="tel:+237677810120" className="text-primary-600 hover:text-primary-700 font-medium">
-                    +237 677 810 120
-                  </a>
+                  <div className="mt-3 ml-16">
+                    <a href="tel:+237677810120" className="text-yellow-600 hover:text-yellow-700 font-medium text-lg">
+                      +237 677 810 120
+                    </a>
+                  </div>
                 </div>
 
-                {/* Bouton Google Maps - Centré */}
-                <div className="flex justify-center lg:justify-start pt-4">
+                {/* Bouton Google Maps - Aligné comme les autres éléments */}
+                <div className="flex w-full pt-4 mt-2 ml-16">
                   <a
                     href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                    className="btn-primary inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-white"
                   >
                     <MapPin size={16} />
                     <span>Voir sur Google Maps</span>
@@ -340,14 +338,14 @@ const Contact: React.FC = () => {
               </div>
 
               {/* Carte alternative avec ombre uniforme */}
-              <div className="w-full h-64 lg:h-80 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl shadow-lg border border-yellow-200 flex flex-col items-center justify-center text-center p-8">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4">
-                  <MapPin className="w-8 h-8 text-primary-600" />
+              <div className="w-full h-80 lg:h-96 bg-gradient-to-br from-yellow-100 to-yellow-200 rounded-xl shadow-lg border border-yellow-200 flex flex-col items-center justify-center text-center p-8">
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-md mb-5">
+                  <MapPin className="w-10 h-10 text-primary-600" />
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">
+                <h4 className="text-xl font-bold text-gray-900 mb-3">
                   Notre bureau à Douala
                 </h4>
-                <p className="text-gray-700 mb-6 font-medium">
+                <p className="text-gray-700 mb-8 font-medium text-lg">
                   Makepe Missoke, quartier d'affaires
                 </p>
                 
@@ -356,10 +354,10 @@ const Contact: React.FC = () => {
                   href="https://www.google.com/maps/dir/?api=1&destination=Makepe+Missoke,+Douala,+Cameroun"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gray-800 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-900 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg transform hover:scale-105"
+                  className="bg-gray-800 text-white px-7 py-4 rounded-lg font-semibold hover:bg-gray-900 transition-all duration-300 inline-flex items-center space-x-3 shadow-lg transform hover:scale-105"
                 >
                   <span>Obtenir l'itinéraire</span>
-                  <ArrowRight size={16} />
+                  <ArrowRight size={18} />
                 </a>
               </div>
             </div>

@@ -33,7 +33,7 @@ const MatrixSection: React.FC = () => {
   const stats = [
     { icon: <BarChart3 className="w-5 h-5" />, value: "150+", label: t('matrixSection.stats.projects') },
     { icon: <Users className="w-5 h-5" />, value: "95%", label: t('matrixSection.stats.satisfaction') },
-    { icon: <Clock className="w-5 h-5" />, value: "5 ans", label: t('matrixSection.stats.experience') }
+    { icon: <Clock className="w-5 h-5" />, value: "3 ans", label: t('matrixSection.stats.experience') }
   ]
 
   return (

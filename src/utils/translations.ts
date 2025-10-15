@@ -30,18 +30,30 @@ export const translations = {
       subtitle: "MatriCx Consulting est un cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle.",
       description: "Accompagnement stratégique personnalisé pour optimiser votre relation client et générer une croissance durable en Afrique.",
       cta: "Prendre rendez-vous",
-      badge: "Cabinet de conseil en expérience client",
-      transformText: "TRANSFORMEZ VOTRE",
-      animatedWords: [
-        'PROFESSIONNELLE',
-        'DIGITALE',
-        'CLIENT',
-        'BUSINESS',
-        'STRATÉGIQUE'
+      badge: "Cabinet de conseil en Expérience Client et Excellence Opérationnelle",
+      heroLine1: "Transformez votre",
+      heroLine2: "expérience",
+      heroLine3: "client",
+      heroLine4: "en avantage",
+      heroLine5: "concurrentiel",
+      heroLine5Base: "",
+      heroLine5AnimatedWords: [
+        'concurrentiel',
+        'stratégique',
+        'business'
       ],
-      experienceText: "EXPÉRIENCE",
-      advantageText: "EN AVANTAGE",
-      competitiveText: "CONCURRENTIEL",
+      fullHeroText: "Transformez votre expérience client en avantage concurrentiel",
+      transformText: "Transformez votre",
+      animatedWords: [
+        'professionnelle',
+        'digitale',
+        'client',
+        'business',
+        'stratégique'
+      ],
+      experienceText: "expérience",
+      advantageText: "en avantage",
+      competitiveText: "concurrentiel",
       stats: {
         clients: "Clients satisfaits",
         experience: "D'expérience",
@@ -361,22 +373,34 @@ export const translations = {
       }
     },
     hero: {
-      title: "WHAT IF CUSTOMER EXPERIENCE WAS JUST A FUNDAMENTAL NEED?",
+      title: "What if customer experience was just a fundamental need?",
       subtitle: "MatriCx Consulting is a consulting firm specializing in strategy & finance, organizational transformation and operational excellence.",
       description: "Personalized strategic support to optimize your customer relationship and generate sustainable growth in Africa.",
       cta: "Book an appointment",
       badge: "Consulting firm specialized in customer experience",
-      transformText: "TRANSFORM YOUR",
-      animatedWords: [
-        'PROFESSIONAL',
-        'DIGITAL',
-        'CUSTOMER',
-        'BUSINESS',
-        'STRATEGIC'
+      heroLine1: "transform your",
+      heroLine2: "experience",
+      heroLine3: "customer",
+      heroLine4: "into competitive",
+      heroLine5: "advantage",
+      heroLine5Base: "",
+      heroLine5AnimatedWords: [
+        'competitive',
+        'strategic',
+        'business'
       ],
-      experienceText: "EXPERIENCE",
-      advantageText: "COMPETITIVE",
-      competitiveText: "ADVANTAGE",
+      fullHeroText: "transform your customer experience into competitive advantage",
+      transformText: "Transform your",
+      animatedWords: [
+        'professional',
+        'digital',
+        'customer',
+        'business',
+        'strategic'
+      ],
+      experienceText: "experience",
+      advantageText: "into competitive",
+      competitiveText: "advantage",
       stats: {
         clients: "Satisfied clients",
         experience: "Experience",

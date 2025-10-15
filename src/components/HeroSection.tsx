@@ -3,18 +3,12 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
 import { Mail, ArrowRight, TrendingUp } from 'lucide-react'
 import ImageCarousel from './ImageCarousel'
-import AnimatedText from './AnimatedText'
 
 const HeroSection: React.FC = () => {
-  const { t, currentLanguage } = useTranslation()
-
-  // Mots qui vont s'animer selon la langue
-  const animatedWords = currentLanguage === 'fr' 
-    ? ['PROFESSIONNELLE', 'DIGITALE', 'CLIENT', 'BUSINESS', 'STRATÉGIQUE']
-    : ['PROFESSIONAL', 'DIGITAL', 'CUSTOMER', 'BUSINESS', 'STRATEGIC']
+  const { t } = useTranslation()
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-20 pb-8 lg:pb-0">
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-20 pb-8 lg:pb-0" style={{ fontFamily: 'Montserrat, sans-serif' }}>
       {/* Background Elements - MatriCx Colors */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full opacity-25 blur-3xl animate-float"></div>
@@ -48,16 +42,14 @@ const HeroSection: React.FC = () => {
                 {t('hero.badge')}
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-secondary-600 font-primary">
-                <span className="block">{t('hero.transformText')}</span>
-                <span className="block">{t('hero.experienceText')}</span>
-                <AnimatedText
-                  baseText=""
-                  animatedWords={animatedWords}
-                  className="block"
-                />
-                <span className="block gradient-text">{t('hero.advantageText')}</span>
-                <span className="block">{t('hero.competitiveText')}</span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-secondary-600" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <span className="block">{t('hero.heroLine1')}</span>
+                <span className="block">{t('hero.heroLine2')}</span>
+                <span className="block bg-gradient-to-r from-yellow-400 to-blue-500 bg-clip-text text-transparent">{t('hero.heroLine3')}</span>
+                <span className="block">{t('hero.heroLine4')}</span>
+                <span className="block bg-gradient-to-r from-yellow-400 to-blue-500 bg-clip-text text-transparent">
+                  {t('hero.heroLine5')}
+                </span>
               </h1>
               
               <p className="text-base lg:text-lg text-secondary-500 leading-relaxed max-w-xl mx-auto lg:mx-0 px-4 lg:px-0 font-secondary">
@@ -85,7 +77,7 @@ const HeroSection: React.FC = () => {
                 <div className="text-xs lg:text-sm text-gray-600">{t('hero.stats.clients')}</div>
               </div>
               <div className="text-center">
-                <div className="text-xl lg:text-2xl font-bold text-primary-600">5 ans</div>
+                <div className="text-xl lg:text-2xl font-bold text-primary-600">3 ans</div>
                 <div className="text-xs lg:text-sm text-gray-600">{t('hero.stats.experience')}</div>
               </div>
               <div className="text-center">

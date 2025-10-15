@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
       {/* Main Navigation */}
-      <nav className="py-4">
+      <nav className="py-2">
         <div className="container-custom flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
@@ -28,7 +28,7 @@ const Header: React.FC = () => {
               <img 
                 src={logoMatricx} 
                 alt="MatriCx CONSULTING" 
-                className="h-14 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                className="h-16 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity duration-200"
               />
             </Link>
           </div>
