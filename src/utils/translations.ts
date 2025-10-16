@@ -26,7 +26,7 @@ export const translations = {
       }
     },
     hero: {
-      title: "ET SI L'EXPÉRIENCE CLIENT N'ÉTAIT QU'UN BESOIN FONDAMENTAL ?",
+      title: "Et si l'expérience client n'était qu'un besoin fondamental ?",
       subtitle: "MatriCx Consulting est un cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle.",
       description: "Accompagnement stratégique personnalisé pour optimiser votre relation client et générer une croissance durable en Afrique.",
       cta: "Prendre rendez-vous",
@@ -63,24 +63,24 @@ export const translations = {
     carousel: {
       images: [
         {
-          title: "Leadership Africain",
-          subtitle: "Excellence en Conseil"
+          title: "Leadership africain",
+          subtitle: "Excellence en conseil"
         },
         {
-          title: "Collaboration Experte", 
-          subtitle: "Synergie d'Excellence"
+          title: "Collaboration experte", 
+          subtitle: "Synergie d'excellence"
         },
         {
-          title: "Innovation Stratégique",
-          subtitle: "Vision Entrepreneuriale"
+          title: "Innovation stratégique",
+          subtitle: "Vision entrepreneuriale"
         },
         {
-          title: "Leadership Féminin",
-          subtitle: "Expertise Reconnue"
+          title: "Leadership féminin",
+          subtitle: "Expertise reconnue"
         },
         {
-          title: "Solutions Innovantes",
-          subtitle: "Transformation Digitale"
+          title: "Solutions innovantes",
+          subtitle: "Transformation digitale"
         }
       ],
       badges: {
@@ -93,18 +93,18 @@ export const translations = {
     matrixSection: {
       title: "Votre succès, notre mission",
       description: "Accompagnement complet pour transformer l'expérience de vos clients en avantage concurrentiel durable.",
-      cta: "EN SAVOIR PLUS",
+      cta: "En savoir plus",
       services: {
         strategy: {
           title: "Stratégie Client",
           description: "Définir votre vision expérience client"
         },
         listening: {
-          title: "Écoute Client",
+          title: "Écoute client",
           description: "Capturer et analyser la voix du client"
         },
         digital: {
-          title: "Solutions Digitales", 
+          title: "Solutions digitales", 
           description: "Outils CRM et transformation numérique"
         },
         training: {
@@ -120,12 +120,12 @@ export const translations = {
       }
     },
     slogan: {
-      header: "NOTRE SLOGAN",
-      title: "FAIRE PRÉFÉRER VOTRE ENTREPRISE..."
+      header: "Notre slogan",
+      title: "Faire préférer votre entreprise..."
     },
     services: {
-      header: "SERVICES",
-      title: "NOS DOMAINES D'EXPERTISE",
+      header: "Services",
+      title: "Nos domaines d'expertise",
       subtitle: "Découvrez nos quatre domaines d'expertise qui vous permettront de transformer votre expérience client en avantage concurrentiel durable.",
       ourExpertises: "Nos expertises :",
       learnMore: "En savoir plus",
@@ -171,8 +171,8 @@ export const translations = {
       }
     },
     testimonials: {
-      header: "TÉMOIGNAGES",
-      title: "LES AVIS DE NOS CLIENTS",
+      header: "Témoignages",
+      title: "Les avis de nos clients",
       clients: [
         {
           quote: "MatriCx Consulting a révolutionné notre approche client. Une expertise remarquable qui a boosté notre chiffre d'affaires de 40%.",
@@ -201,9 +201,13 @@ export const translations = {
       ]
     },
     values: {
-      badge: "NOTRE OBJECTIF EST DE...",
+      badge: "Notre objectif est de...",
       title: "Faire préférer votre entreprise !",
-      subtitle: "Au travers de trois valeurs qui nous définissent et déterminent la valeur ajoutée que nous souhaitons vous apporter.",
+      subtitle: "Au travers de quatre valeurs qui nous définissent et déterminent la valeur ajoutée que nous souhaitons vous apporter.",
+      innovation: {
+        name: "Innovation",
+        description: "Proposer des solutions créatives et avant-gardistes pour transformer votre expérience client."
+      },
       integrity: {
         name: "Intégrité",
         description: "Assurer l'atteinte des objectifs de nos clients en toute circonstance."
@@ -219,12 +223,12 @@ export const translations = {
     },
     servicesSection: {
       ctaTitle: "Un plan pour améliorer votre expérience client ?",
-      ctaSubtitle: "NOS EXPERTS TOUJOURS PRÊTS À TRAVAILLER AVEC VOUS."
+      ctaSubtitle: "Nos experts toujours prêts à travailler avec vous."
     },
     contact: {
-      title: "PARLONS-EN",
-      subtitle: "DEMANDEZ UN DEVIS GRATUIT",
-      cta: "CONTACTEZ-NOUS",
+      title: "Parlons-en",
+      subtitle: "Demandez un devis gratuit",
+      cta: "Contactez-nous",
       phone: "+237 677 810 120",
       email: "contact@matricxconsulting.com",
       address: "Douala, Makepe BM, BP 12777",
@@ -232,7 +236,7 @@ export const translations = {
         title: "Parlons de votre",
         titleHighlight: "projet",
         subtitle: "Une question ? Un projet ? Nous sommes là pour vous accompagner dans votre transformation client.",
-        badge: "CONTACT",
+        badge: "Contact",
         location: "Notre localisation",
         description: "Prenez contact avec nos experts et discutons de la façon dont nous pouvons aider votre entreprise à croître.",
         form: {
@@ -277,7 +281,7 @@ export const translations = {
       company: "MatriCx CONSULTING",
       description: "Cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle.",
       quickLinks: "Liens rapides",
-      ourServices: "Nos Services",
+      ourServices: "Nos services",
       followUs: "Suivez-nous",
       contactInfo: "Informations de contact",
       madeWith: "Fait avec",
@@ -389,7 +393,7 @@ export const translations = {
         'strategic',
         'business'
       ],
-      fullHeroText: "transform your customer experience into competitive advantage",
+      fullHeroText: "Transform your customer experience into competitive advantage",
       transformText: "Transform your",
       animatedWords: [
         'professional',
@@ -410,48 +414,48 @@ export const translations = {
     carousel: {
       images: [
         {
-          title: "African Leadership",
-          subtitle: "Excellence in Consulting"
+          title: "African leadership",
+          subtitle: "Excellence in consulting"
         },
         {
-          title: "Expert Collaboration", 
-          subtitle: "Synergy of Excellence"
+          title: "Expert collaboration", 
+          subtitle: "Synergy of excellence"
         },
         {
-          title: "Strategic Innovation",
-          subtitle: "Entrepreneurial Vision"
+          title: "Strategic innovation",
+          subtitle: "Entrepreneurial vision"
         },
         {
-          title: "Female Leadership",
-          subtitle: "Recognized Expertise"
+          title: "Female leadership",
+          subtitle: "Recognized expertise"
         },
         {
-          title: "Innovative Solutions",
-          subtitle: "Digital Transformation"
+          title: "Innovative solutions",
+          subtitle: "Digital transformation"
         }
       ],
       badges: {
-        satisfied: "Satisfied Clients",
+        satisfied: "Satisfied clients",
         africa: "Throughout Africa", 
-        results: "Fast Results",
-        transformation: "Visible Transformation"
+        results: "Fast results",
+        transformation: "Visible transformation"
       }
     },
     matrixSection: {
       title: "Your success, our mission",
       description: "Complete support to transform your customers' experience into a sustainable competitive advantage.",
-      cta: "LEARN MORE",
+      cta: "Learn more",
       services: {
         strategy: {
-          title: "Customer Strategy",
+          title: "Customer strategy",
           description: "Define your customer experience vision"
         },
         listening: {
-          title: "Customer Listening",
+          title: "Customer listening",
           description: "Capture and analyze voice of customer"
         },
         digital: {
-          title: "Digital Solutions",
+          title: "Digital solutions",
           description: "CRM tools and digital transformation"
         },
         training: {
@@ -467,12 +471,12 @@ export const translations = {
       }
     },
     slogan: {
-      header: "OUR SLOGAN",
-      title: "MAKE YOUR COMPANY PREFERRED..."
+      header: "Our slogan",
+      title: "Make your company preferred..."
     },
     services: {
-      header: "SERVICES",
-      title: "OUR AREAS OF EXPERTISE",
+      header: "Services",
+      title: "Our areas of expertise",
       subtitle: "Discover our four areas of expertise that will allow you to transform your customer experience into a sustainable competitive advantage.",
       ourExpertises: "Our expertise:",
       learnMore: "Learn more",
@@ -518,8 +522,8 @@ export const translations = {
       }
     },
     testimonials: {
-      header: "TESTIMONIALS",
-      title: "OUR CLIENTS' REVIEWS",
+      header: "Testimonials",
+      title: "Our clients' reviews",
       clients: [
         {
           quote: "MatriCx Consulting has revolutionized our customer approach. Remarkable expertise that boosted our revenue by 40%.",
@@ -548,9 +552,13 @@ export const translations = {
       ]
     },
     values: {
-      badge: "OUR OBJECTIVE IS TO...",
+      badge: "Our objective is to...",
       title: "Make your company preferred!",
-      subtitle: "Through three values that define us and determine the added value we want to bring you.",
+      subtitle: "Through four values that define us and determine the added value we want to bring you.",
+      innovation: {
+        name: "Innovation",
+        description: "Propose creative and cutting-edge solutions to transform your customer experience."
+      },
       integrity: {
         name: "Integrity",
         description: "Ensure achievement of our clients' objectives under all circumstances."
@@ -566,12 +574,12 @@ export const translations = {
     },
     servicesSection: {
       ctaTitle: "A plan to improve your customer experience?",
-      ctaSubtitle: "OUR EXPERTS ALWAYS READY TO WORK WITH YOU."
+      ctaSubtitle: "Our experts always ready to work with you."
     },
     contact: {
-      title: "LET'S TALK",
-      subtitle: "REQUEST A FREE QUOTE",
-      cta: "CONTACT US",
+      title: "Let's talk",
+      subtitle: "Request a free quote",
+      cta: "Contact us",
       phone: "+237 677 810 120",
       email: "contact@matricxconsulting.com", 
       address: "Douala, Makepe BM, BP 12777",
@@ -579,8 +587,8 @@ export const translations = {
         title: "Let's talk about your",
         titleHighlight: "project",
         subtitle: "A question? A project? We're here to support you in your customer transformation.",
-        badge: "CONTACT",
-        location: "Our Location",
+        badge: "Contact",
+        location: "Our location",
         description: "Get in touch with our experts and let's discuss how we can help your business grow.",
         form: {
           title: "Send us a message",
@@ -624,7 +632,7 @@ export const translations = {
       company: "MatriCx CONSULTING",
       description: "Consulting firm specialized in strategy & finance, organizational transformation and operational excellence.",
       quickLinks: "Quick Links",
-      ourServices: "Our Services",
+      ourServices: "Our services",
       followUs: "Follow Us",
       contactInfo: "Contact Information",
       madeWith: "Made with",

@@ -72,16 +72,16 @@ const MatrixSection: React.FC = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group cursor-pointer"
+              className="group cursor-pointer h-full"
             >
-              <div className="bg-white border-2 border-gray-900 p-4 lg:p-8 rounded-2xl transition-all duration-300 hover:bg-gray-50 hover:shadow-xl hover:-translate-y-2 hover:border-primary-600">
+              <div className="bg-white border-2 border-gray-900 p-4 lg:p-8 rounded-2xl transition-all duration-300 hover:bg-gray-50 hover:shadow-xl hover:-translate-y-2 hover:border-primary-600 h-48 sm:h-52 md:h-56 lg:h-64 flex flex-col">
                 <div className="flex justify-center mb-3 lg:mb-6 text-gray-700 group-hover:text-primary-600 transition-colors duration-300 scale-75 lg:scale-100">
                   {service.icon}
                 </div>
-                <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-2 lg:mb-3 group-hover:text-primary-700 transition-colors duration-300">
+                <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-2 lg:mb-3 group-hover:text-primary-700 transition-colors duration-300 text-center">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-xs lg:text-sm leading-relaxed">
+                <p className="text-gray-600 text-xs lg:text-sm leading-relaxed flex-grow text-center">
                   {service.description}
                 </p>
               </div>

@@ -26,10 +26,10 @@ async function generateOGImage() {
           </linearGradient>
         </defs>
         <rect width="${width}" height="${height}" fill="url(#grad)"/>
-        <text x="50%" y="85%" text-anchor="middle" fill="white" font-size="48" font-family="Arial, sans-serif" font-weight="bold">
+        <text x="50%" y="85%" text-anchor="middle" fill="white" font-size="48" font-family="Montserrat, sans-serif" font-weight="bold">
           MatriCx Consulting
         </text>
-        <text x="50%" y="92%" text-anchor="middle" fill="white" font-size="24" font-family="Arial, sans-serif" opacity="0.9">
+        <text x="50%" y="92%" text-anchor="middle" fill="white" font-size="24" font-family="Montserrat, sans-serif" opacity="0.9">
           Cabinet de conseil en expérience client
         </text>
       </svg>`

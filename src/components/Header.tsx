@@ -27,7 +27,7 @@ const Header: React.FC = () => {
             <Link to="/" className="transition-transform duration-200 hover:scale-105">
               <img 
                 src={logoMatricx} 
-                alt="MatriCx CONSULTING" 
+                alt="MatriCx Consulting" 
                 className="h-16 w-auto object-contain cursor-pointer hover:opacity-90 transition-opacity duration-200"
               />
             </Link>
@@ -129,8 +129,8 @@ const Header: React.FC = () => {
                     
                     {/* Section Articles (à droite, juste à côté) */}
                     <div className="w-96 bg-gray-50 p-8 rounded-lg">
-                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-6">
-                        {currentLanguage === 'fr' ? 'À la une du blog' : 'Featured from Blog'}
+                      <h3 className="text-sm font-semibold text-gray-500 tracking-wide mb-6">
+                        {currentLanguage === 'fr' ? 'À la une du blog' : 'Featured from blog'}
                       </h3>
                       <div className="space-y-6">
                         {/* Article 1 - Leadership Africain */}
@@ -262,8 +262,8 @@ const Header: React.FC = () => {
                     
                     {/* Section Articles (à droite, juste à côté) - Identique à About */}
                     <div className="w-96 bg-gray-50 p-8 rounded-lg">
-                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-6">
-                        {currentLanguage === 'fr' ? 'À la une du blog' : 'Featured from Blog'}
+                      <h3 className="text-sm font-semibold text-gray-500 tracking-wide mb-6">
+                        {currentLanguage === 'fr' ? 'À la une du blog' : 'Featured from blog'}
                       </h3>
                       <div className="space-y-6">
                         {/* Article 1 - Leadership Africain */}

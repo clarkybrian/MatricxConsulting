@@ -6,7 +6,7 @@
 - **Concept** : Cx = Customer Experience (Expérience Client)
 - **Symboles** : Cercle, triangle, rectangle + traits géométriques
 - **Slogan** : "Amazing experiences."
-- **Police principale** : **HELVETICA** (titres et textes)
+- **Police principale** : **Montserrat** (titres et textes)
 - **Police secondaire** : **MONTSERRAT** (accompagnement)
 
 ---
@@ -38,7 +38,7 @@
 ## 📝 **2. TYPOGRAPHIE À CHANGER**
 
 ### 🔤 **Polices à Implémenter**
-1. **HELVETICA** (Police de référence)
+1. **Montserrat** (Police de référence)
    - **Light Oblique** : Textes légers inclinés
    - **Regular** : Textes courants
    - **Bold** : Titres et emphases
@@ -100,9 +100,9 @@ colors: {
 #### `tailwind.config.js` - Typographie
 ```javascript
 fontFamily: {
-  'sans': ['Helvetica', 'Arial', 'sans-serif'],
-  'heading': ['Montserrat', 'Helvetica', 'sans-serif'],
-  'helvetica': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+  'sans': ['Montserrat', 'Arial', 'sans-serif'],
+  'heading': ['Montserrat', 'Montserrat', 'sans-serif'],
+  'Montserrat': ['Montserrat Neue', 'Montserrat', 'Arial', 'sans-serif'],
   'montserrat': ['Montserrat', 'sans-serif']
 }
 ```
@@ -114,28 +114,28 @@ fontFamily: {
 - [ ] **Couleur fond** : Blanc ou transparent 
 - [ ] **Texte navigation** : Couleur `#575756` (gris principal)
 - [ ] **Bouton CTA** : Fond `#FDC300` (jaune), texte noir
-- [ ] **Police** : Helvetica Regular pour navigation
+- [ ] **Police** : Montserrat Regular pour navigation
 - [ ] **Survol** : États hover avec jaune
 
 #### **Hero Section** - Page d'accueil
-- [ ] **Titre principal** : Police Helvetica Bold, couleur `#1D1D1B`
+- [ ] **Titre principal** : Police Montserrat Bold, couleur `#1D1D1B`
 - [ ] **Sous-titre** : Police Montserrat Regular, couleur `#575756`
 - [ ] **Boutons CTA** : 
-  - Primaire : `#FDC300` + texte noir + Helvetica Bold
-  - Secondaire : `#0080AF` + texte blanc + Helvetica Regular
+  - Primaire : `#FDC300` + texte noir + Montserrat Bold
+  - Secondaire : `#0080AF` + texte blanc + Montserrat Regular
 - [ ] **Fond** : Dégradé subtil ou blanc pur
 
 #### **Services Section**
 - [ ] **Cartes services** : Bordure jaune `#FDC300` au hover
-- [ ] **Titres** : Helvetica Bold, `#1D1D1B`
-- [ ] **Descriptions** : Helvetica Regular, `#575756`
+- [ ] **Titres** : Montserrat Bold, `#1D1D1B`
+- [ ] **Descriptions** : Montserrat Regular, `#575756`
 - [ ] **Icônes** : Couleur jaune `#FDC300`
 
 #### **Footer.tsx**
 - [ ] **Fond** : `#1D1D1B` (noir principal)
 - [ ] **Texte** : Blanc `#FFFFFF`
 - [ ] **Liens** : Couleur jaune `#FDC300` au hover
-- [ ] **Police** : Helvetica Light
+- [ ] **Police** : Montserrat Light
 
 ### 📱 **C. PAGES SPÉCIFIQUES**
 
@@ -143,16 +143,16 @@ fontFamily: {
 - [ ] **Formulaire** : 
   - Bordures inputs : `#575756`
   - Focus : `#FDC300`
-  - Labels : Helvetica Regular, `#1D1D1B`
+  - Labels : Montserrat Regular, `#1D1D1B`
 - [ ] **Boutons** :
-  - "Envoyer" : `#FDC300` + noir + Helvetica Bold
-  - "Prendre RDV" : `#0080AF` + blanc + Helvetica Regular
+  - "Envoyer" : `#FDC300` + noir + Montserrat Bold
+  - "Prendre RDV" : `#0080AF` + blanc + Montserrat Regular
 - [ ] **Carte contact** : Bordure jaune subtile
 
 #### **Page Services**
 - [ ] **Sections** : Alternance blanc/gris très clair
 - [ ] **Call-to-actions** : Jaune principal partout
-- [ ] **Typographie** : Helvetica pour tous les textes
+- [ ] **Typographie** : Montserrat pour tous les textes
 
 #### **Page À Propos**
 - [ ] **Timeline/Histoire** : Éléments jaunes `#FDC300`
@@ -177,8 +177,8 @@ fontFamily: {
   - Hover : `#FDC300` (jaune)
 
 #### **Typographie Chatbot**
-- [ ] **Messages** : Helvetica Regular
-- [ ] **Boutons** : Helvetica Bold
+- [ ] **Messages** : Montserrat Regular
+- [ ] **Boutons** : Montserrat Bold
 - [ ] **En-tête** : Montserrat Bold
 
 #### **Icônes & États**
@@ -193,7 +193,7 @@ fontFamily: {
 .btn-primary {
   background: #FDC300;
   color: #1D1D1B;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   border-radius: 8px;
   padding: 12px 24px;
@@ -210,7 +210,7 @@ fontFamily: {
 .btn-secondary {
   background: #0080AF;
   color: #FFFFFF;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: normal;
 }
 
@@ -267,7 +267,7 @@ fontFamily: {
 
 ### 🚨 **PRIORITÉ 1 - Critique**
 1. **Couleurs primaires** (jaune/gris/bleu)
-2. **Typographie Helvetica/Montserrat**
+2. **Typographie Montserrat/Montserrat**
 3. **Logo et favicon** (déjà fait ✅)
 4. **Boutons principaux**
 
@@ -289,7 +289,7 @@ fontFamily: {
 
 ### ✅ **Contrôles Finaux**
 - [ ] Toutes les couleurs correspondent aux Pantone
-- [ ] Typographie Helvetica partout
+- [ ] Typographie Montserrat partout
 - [ ] Slogan "Amazing experiences" intégré
 - [ ] Chatbot aux couleurs de la charte
 - [ ] Boutons cohérents sur toutes les pages
@@ -308,7 +308,7 @@ fontFamily: {
 - Préserver la structure React existante
 
 ### 🎯 **Objectif Final**
-Créer une expérience visuelle 100% conforme à la charte graphique MatriCx Consulting, centrée sur l'identité "Customer Experience" avec les couleurs jaune/gris/bleu et la typographie Helvetica/Montserrat.
+Créer une expérience visuelle 100% conforme à la charte graphique MatriCx Consulting, centrée sur l'identité "Customer Experience" avec les couleurs jaune/gris/bleu et la typographie Montserrat/Montserrat.
 
 ---
 

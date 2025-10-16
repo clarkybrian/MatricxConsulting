@@ -5,6 +5,7 @@ import matricxLogo from '../images/logomatricx.png'
 import matrixLogo from '../images/matrix.png'
 import newtelnetLogo from '../images/newtelnet.png'
 import wafaLogo from '../images/wafa.png'
+import hotelLogo from '../images/hotel.png'
 
 const PartnersCarousel: React.FC = () => {
   const { currentLanguage } = useTranslation()
@@ -45,13 +46,15 @@ const PartnersCarousel: React.FC = () => {
       name: 'WAFA'
     },
     {
-      type: 'text',
-      name: 'Hotel Y'
+      type: 'image',
+      src: hotelLogo,
+      alt: 'Hotel',
+      name: 'Hotel'
     }
   ]
 
-  // Dupliquer les partenaires pour un défilement infini fluide (4 fois pour plus de fluidité)
-  const duplicatedPartners = [...partners, ...partners, ...partners, ...partners]
+  // Dupliquer les partenaires exactement 2 fois pour un défilement parfaitement infini
+  const duplicatedPartners = [...partners, ...partners]
 
   return (
     <section className="py-16 bg-gray-50 overflow-hidden">

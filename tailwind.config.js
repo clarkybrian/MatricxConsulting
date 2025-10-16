@@ -60,10 +60,10 @@ export default {
         }
       },
       fontFamily: {
-        // MatriCx Typography System
-        sans: ['Helvetica', 'Arial', 'sans-serif'],
-        display: ['Helvetica', 'Arial', 'sans-serif'],
-        body: ['Montserrat', 'system-ui', 'sans-serif'],
+        // MatriCx Typography System - Montserrat uniquement
+        sans: ['Montserrat', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
+        body: ['Montserrat', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

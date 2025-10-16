@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-20 pb-8 lg:pb-0" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-20 pb-8 lg:pb-0">
       {/* Background Elements - MatriCx Colors */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full opacity-25 blur-3xl animate-float"></div>
@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
                 {t('hero.badge')}
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-secondary-600" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-secondary-600">
                 <span className="block">{t('hero.heroLine1')}</span>
                 <span className="block">{t('hero.heroLine2')}</span>
                 <span className="block bg-gradient-to-r from-yellow-400 to-blue-500 bg-clip-text text-transparent">{t('hero.heroLine3')}</span>

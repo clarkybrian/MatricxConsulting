@@ -328,7 +328,7 @@ const Contact: React.FC = () => {
                     href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-white"
+                    className="btn-primary inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-black font-bold"
                   >
                     <MapPin size={16} />
                     <span>Voir sur Google Maps</span>

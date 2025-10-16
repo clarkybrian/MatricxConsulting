@@ -72,35 +72,41 @@ const ServicesSection: React.FC = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group cursor-pointer animate-fade-in"
+              className="group cursor-pointer animate-fade-in h-full"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className={`${service.bgColor} p-4 lg:p-8 rounded-2xl lg:rounded-3xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100`}>
+              <div className={`${service.bgColor} p-2 sm:p-3 md:p-4 lg:p-8 rounded-2xl lg:rounded-3xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100 h-64 sm:h-72 md:h-80 lg:h-96 flex flex-col overflow-hidden`}>
                 {/* Icône dans un cercle avec couleurs MatriCx */}
-                <div className={`${service.iconBg} ${service.iconColor} w-10 h-10 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl flex items-center justify-center mb-3 lg:mb-6 shadow-sm`}>
-                  <div className="w-6 h-6 lg:w-10 lg:h-10">
+                <div className={`${service.iconBg} ${service.iconColor} w-8 h-8 sm:w-10 sm:h-10 lg:w-16 lg:h-16 rounded-lg lg:rounded-2xl flex items-center justify-center mb-2 lg:mb-6 shadow-sm flex-shrink-0`}>
+                  <div className="w-4 h-4 sm:w-6 sm:h-6 lg:w-10 lg:h-10 flex-shrink-0">
                     {service.icon}
                   </div>
                 </div>
                 
-                {/* Titre avec police Helvetica */}
-                <h3 className="text-sm lg:text-xl font-bold text-gray-900 mb-2 lg:mb-4 font-primary">
-                  {service.name}
+                {/* Titre avec police Montserrat */}
+                <h3 className="text-sm sm:text-base lg:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-4 font-primary text-center overflow-hidden">
+                  <span className="block truncate px-1">
+                    {service.name}
+                  </span>
                 </h3>
                 
                 {/* Description */}
-                <p className="text-gray-700 text-xs lg:text-sm leading-relaxed mb-3 lg:mb-6">
-                  {service.description}
-                </p>
+                <div className="flex-grow flex items-center justify-center overflow-hidden px-1">
+                  <p className="text-gray-700 text-xs sm:text-xs lg:text-sm leading-tight text-center overflow-hidden line-clamp-3 sm:line-clamp-4 lg:line-clamp-6">
+                    {service.description}
+                  </p>
+                </div>
                 
                 {/* Bouton "En savoir plus" style MatriCx */}
-                <Link 
-                  to={service.link}
-                  className="inline-flex items-center bg-black/10 hover:bg-black/20 text-gray-900 hover:text-gray-800 font-semibold text-xs lg:text-sm px-2 py-1 lg:px-4 lg:py-2 rounded-md lg:rounded-lg group-hover:translate-x-1 transition-all duration-300 backdrop-blur-sm"
-                >
-                  <span className="font-primary">{t('common.learnMore')}</span>
-                  <ArrowRight size={12} className="ml-1 lg:ml-2 group-hover:translate-x-1 transition-transform duration-300 lg:w-4 lg:h-4" />
-                </Link>
+                <div className="mt-auto flex justify-center flex-shrink-0 pt-2">
+                  <Link 
+                    to={service.link}
+                    className="inline-flex items-center bg-black/10 hover:bg-black/20 text-gray-900 hover:text-gray-800 font-semibold text-xs lg:text-sm px-2 py-1 lg:px-4 lg:py-2 rounded-md lg:rounded-lg group-hover:translate-x-1 transition-all duration-300 backdrop-blur-sm max-w-full"
+                  >
+                    <span className="font-primary truncate">{t('common.learnMore')}</span>
+                    <ArrowRight size={10} className="ml-1 lg:ml-2 group-hover:translate-x-1 transition-transform duration-300 lg:w-4 lg:h-4 flex-shrink-0" />
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

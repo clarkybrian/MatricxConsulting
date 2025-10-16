@@ -1,35 +1,43 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { Shield, Heart, Sparkles, ArrowRight } from 'lucide-react'
+import { Shield, Heart, Sparkles, Lightbulb, ArrowRight } from 'lucide-react'
 
 const ValuesSection: React.FC = () => {
   const { t } = useTranslation()
 
   const values = [
     {
+      icon: <Lightbulb className="w-8 h-8" />,
+      name: t('values.innovation.name'),
+      description: t('values.innovation.description'),
+      color: "bg-yellow-500",
+      bgColor: "bg-yellow-500",
+      iconColor: "text-white"
+    },
+    {
       icon: <Shield className="w-8 h-8" />,
       name: t('values.integrity.name'),
       description: t('values.integrity.description'),
-      color: "from-gray-500 to-gray-600",
-      bgColor: "bg-gray-50",
-      iconColor: "text-gray-600"
+      color: "bg-blue-500",
+      bgColor: "bg-blue-500",
+      iconColor: "text-white"
     },
     {
       icon: <Heart className="w-8 h-8" />,
       name: t('values.engagement.name'),
       description: t('values.engagement.description'),
-      color: "from-yellow-500 to-yellow-600",
-      bgColor: "bg-yellow-50",
-      iconColor: "text-yellow-600"
+      color: "bg-white border-2 border-gray-300",
+      bgColor: "bg-white border-2 border-gray-300",
+      iconColor: "text-gray-800"
     },
     {
       icon: <Sparkles className="w-8 h-8" />,
       name: t('values.authenticity.name'),
       description: t('values.authenticity.description'),
-      color: "from-blue-500 to-blue-600",
-      bgColor: "bg-blue-50",
-      iconColor: "text-blue-600"
+      color: "bg-gray-900",
+      bgColor: "bg-gray-900",
+      iconColor: "text-white"
     }
   ]
 
@@ -51,59 +59,40 @@ const ValuesSection: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full mt-6"></div>
         </div>
 
-        {/* Values Grid - 2 premières en ligne, 3ème centrée sur mobile */}
-        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-4 lg:gap-8 mb-16">
-          {/* Première ligne mobile : 2 éléments côte à côte */}
-          <div className="flex gap-4 lg:contents">
-            {values.slice(0, 2).map((value, index) => (
-              <div
-                key={index}
-                className={`card group text-center hover:scale-105 transform transition-all duration-500 ${value.bgColor} border-0 animate-fade-in flex-1 lg:flex-none`}
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                {/* Value Icon */}
-                <div className={`inline-flex p-2 lg:p-4 rounded-2xl ${value.bgColor} ${value.iconColor} mb-3 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto scale-75 lg:scale-100`}>
+        {/* Values Grid - 4 valeurs en grille */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-16">
+          {values.map((value, index) => (
+            <div
+              key={index}
+              className={`card group text-center hover:scale-105 transform transition-all duration-500 ${value.bgColor} border-0 animate-fade-in h-56 sm:h-60 md:h-64 lg:h-72 flex flex-col justify-center overflow-hidden p-3 sm:p-4 lg:p-6`}
+              style={{ animationDelay: `${index * 200}ms` }}
+            >
+              {/* Value Icon */}
+              <div className={`inline-flex p-1 sm:p-2 lg:p-4 rounded-xl lg:rounded-2xl ${value.bgColor} ${value.iconColor} mb-2 sm:mb-3 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto flex-shrink-0`}>
+                <div className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0">
                   {value.icon}
                 </div>
+              </div>
 
-                {/* Value Content */}
-                <div className="space-y-2 lg:space-y-4">
-                  <h3 className="text-sm lg:text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+              {/* Value Content */}
+              <div className="flex flex-col flex-grow overflow-hidden">
+                <h3 className={`text-xs sm:text-sm lg:text-2xl font-bold ${
+                  value.bgColor.includes('white') || value.bgColor.includes('yellow') 
+                    ? 'text-gray-900 group-hover:text-black' 
+                    : 'text-white group-hover:text-primary-600'
+                } transition-colors duration-300 mb-1 sm:mb-2 lg:mb-4`}>
+                  <span className="block truncate px-1">
                     {value.name}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed text-xs lg:text-base">
+                  </span>
+                </h3>
+                <div className="flex-grow flex items-center justify-center overflow-hidden">
+                  <p className={`leading-relaxed text-xs sm:text-sm lg:text-base ${value.bgColor.includes('white') || value.bgColor.includes('yellow') ? 'text-gray-600' : 'text-gray-200'} overflow-hidden line-clamp-4 sm:line-clamp-5 lg:line-clamp-6 px-1 text-center`}>
                     {value.description}
                   </p>
                 </div>
               </div>
-            ))}
-          </div>
-          
-          {/* 3ème élément centré sur mobile */}
-          <div className="flex justify-center lg:contents">
-            <div
-              className={`card group text-center hover:scale-105 transform transition-all duration-500 ${values[2].bgColor} border-0 animate-fade-in w-1/2 lg:w-full`}
-              style={{ animationDelay: '400ms' }}
-            >
-              {/* Value Icon */}
-              <div className={`inline-flex p-2 lg:p-4 rounded-2xl ${values[2].bgColor} ${values[2].iconColor} mb-3 lg:mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg mx-auto scale-75 lg:scale-100`}>
-                {values[2].icon}
-              </div>
-
-              {/* Value Content */}
-              <div className="space-y-2 lg:space-y-4">
-                <h3 className="text-sm lg:text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
-                  {values[2].name}
-                </h3>
-                <p className="text-gray-600 leading-relaxed text-xs lg:text-base">
-                  {values[2].description}
-                </p>
-              </div>
-
-              {/* Decorative Background */}
-              <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${values[2].color} opacity-10 rounded-bl-3xl`}></div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* CTA Section */}

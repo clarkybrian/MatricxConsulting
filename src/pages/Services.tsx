@@ -104,7 +104,7 @@ const Services: React.FC = () => {
               {services.map((service) => {
                 const IconComponent = service.icon
                 return (
-                  <div key={service.id} className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 ${
+                  <div key={service.id} className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-l-4 h-full flex flex-col ${
                     service.color === 'primary' ? 'border-primary-500' :
                     service.color === 'accent' ? 'border-accent-500' :
                     service.color === 'secondary' ? 'border-secondary-500' : 'border-gray-500'
@@ -122,7 +122,7 @@ const Services: React.FC = () => {
                         }`} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-secondary-900 mb-3 font-primary">
+                        <h3 className="text-xl lg:text-3xl font-bold text-secondary-900 mb-3 font-primary">
                           {service.name}
                         </h3>
                         <p className="text-secondary-600 font-secondary">
@@ -132,8 +132,8 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* Features List */}
-                    <div className="mb-8">
-                      <h4 className="text-sm font-semibold text-secondary-700 mb-4 uppercase tracking-wide">
+                    <div className="mb-8 flex-grow">
+                      <h4 className="text-sm font-semibold text-secondary-700 mb-4 tracking-wide">
                         {t('services.ourExpertises')}
                       </h4>
                       <ul className="space-y-2">
@@ -151,13 +151,15 @@ const Services: React.FC = () => {
                     </div>
 
                     {/* CTA Button */}
-                    <Link 
-                      to={service.route}
-                      className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-yellow-500 to-gray-800 hover:from-yellow-600 hover:to-gray-900 text-white font-bold rounded-lg transition-all duration-300 font-primary group transform hover:scale-105 shadow-lg hover:shadow-xl"
-                    >
-                      <span>{t('services.learnMore')}</span>
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
-                    </Link>
+                    <div className="mt-auto">
+                      <Link 
+                        to={service.route}
+                        className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-yellow-500 to-gray-800 hover:from-yellow-600 hover:to-gray-900 text-black font-bold rounded-lg transition-all duration-300 font-primary group transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      >
+                        <span>{t('services.learnMore')}</span>
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-200" />
+                      </Link>
+                    </div>
                   </div>
                 )
               })}

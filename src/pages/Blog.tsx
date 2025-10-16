@@ -378,7 +378,7 @@ const Blog: React.FC = () => {
                 {/* Bouton Load More */}
                 {filteredArticles.length > 0 && (
                   <div className="text-center mt-12">
-                    <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-yellow-500 text-white rounded-lg hover:from-blue-700 hover:to-yellow-600 transition-all transform hover:scale-105 shadow-lg">
+                    <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-yellow-500 text-black font-bold rounded-lg hover:from-blue-700 hover:to-yellow-600 transition-all transform hover:scale-105 shadow-lg">
                       {currentLanguage === 'fr' ? 'Charger plus d\'articles' : 'Load more articles'}
                     </button>
                   </div>
