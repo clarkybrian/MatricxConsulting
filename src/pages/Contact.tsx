@@ -322,16 +322,16 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Bouton Google Maps - Aligné comme les autres éléments */}
-                <div className="flex w-full pt-4 mt-2 ml-16">
+                {/* Bouton Google Maps - Responsive */}
+                <div className="flex w-full pt-4 mt-2 lg:ml-16">
                   <a
                     href="https://www.google.com/maps/search/Makepe+Missoke,+Douala,+Cameroun"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary inline-flex items-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-black font-bold"
+                    className="btn-primary inline-flex items-center justify-center space-x-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300 bg-yellow-500 border-yellow-600 text-black font-bold w-full sm:w-auto px-4 py-3 text-sm sm:text-base"
                   >
                     <MapPin size={16} />
-                    <span>Voir sur Google Maps</span>
+                    <span className="whitespace-nowrap">Voir sur Google Maps</span>
                     <ArrowRight size={14} />
                   </a>
                 </div>

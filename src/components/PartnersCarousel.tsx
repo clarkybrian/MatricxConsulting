@@ -53,7 +53,7 @@ const PartnersCarousel: React.FC = () => {
     }
   ]
 
-  // Dupliquer les partenaires exactement 2 fois pour un défilement parfaitement infini
+  // Dupliquer exactement 2 fois pour un défilement CSS fluide
   const duplicatedPartners = [...partners, ...partners]
 
   return (
@@ -73,20 +73,21 @@ const PartnersCarousel: React.FC = () => {
 
         {/* Conteneur du carrousel avec gradient fade */}
         <div className="relative overflow-hidden h-20">
-          {/* Gradient fade gauche - masquage complet */}
+          {/* Gradient fade gauche */}
           <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
           
-          {/* Gradient fade droite - masquage complet */}
+          {/* Gradient fade droite */}
           <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
 
-          {/* Carrousel qui défile */}
+          {/* Carrousel avec CSS pur - fluide garanti */}
           <div 
-            className={`flex space-x-12 ${isHovered ? 'animation-paused' : 'partners-scroll-infinite'}`}
+            className={`flex space-x-12 ${isHovered ? 'carousel-paused' : 'carousel-scroll'}`}
+            style={{ width: 'max-content' }}
           >
             {duplicatedPartners.map((partner, index) => (
               <div
                 key={`${partner.name}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center h-20 w-32 hover:scale-130 transition-transform duration-300 partners-logo-item"
+                className="flex-shrink-0 flex items-center justify-center h-20 w-32 hover:scale-130 transition-transform duration-300"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               >

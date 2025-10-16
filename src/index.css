@@ -316,8 +316,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Animation pour le carrousel de partenaires - Défilement vraiment infini */
-@keyframes partners-scroll {
+/* Animation carrousel fluide avec CSS pur - Défilement vraiment infini */
+@keyframes carousel-desktop {
   0% {
     transform: translateX(0);
   }
@@ -326,17 +326,42 @@ button:focus-visible {
   }
 }
 
-.partners-scroll-infinite {
-  animation: partners-scroll 15s linear infinite;
+@keyframes carousel-mobile {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel-scroll {
+  animation: carousel-desktop 26s linear infinite;
   animation-fill-mode: both;
   will-change: transform;
 }
 
-.animation-paused {
-  animation: partners-scroll 15s linear infinite;
+.carousel-paused {
+  animation: carousel-desktop 26s linear infinite;
   animation-play-state: paused;
   animation-fill-mode: both;
   will-change: transform;
+}
+
+/* Version mobile 2x plus rapide */
+@media (max-width: 640px) {
+  .carousel-scroll {
+    animation: carousel-mobile 20s linear infinite;
+    animation-fill-mode: both;
+    will-change: transform;
+  }
+  
+  .carousel-paused {
+    animation: carousel-mobile 20s linear infinite;
+    animation-play-state: paused;
+    animation-fill-mode: both;
+    will-change: transform;
+  }
 }
 
 /* Classe utilitaire pour le zoom à 130% */
