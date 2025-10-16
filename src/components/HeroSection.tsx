@@ -8,7 +8,7 @@ const HeroSection: React.FC = () => {
   const { t } = useTranslation()
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-20 pb-8 lg:pb-0">
+    <section id="home" className="relative flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-20 pb-8 lg:pb-12">
       {/* Background Elements - MatriCx Colors */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full opacity-25 blur-3xl animate-float"></div>
@@ -86,13 +86,6 @@ const HeroSection: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator - Masqué sur mobile */}
-      <div className="hidden lg:block absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
