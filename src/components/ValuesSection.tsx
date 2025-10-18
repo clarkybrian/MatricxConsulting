@@ -125,7 +125,7 @@ const ValuesSection: React.FC = () => {
             {/* Main Image - Same height as left content */}
             <div className="flex-1 rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="/src/images/valeurs.jpg" 
+                src="/valeurs.jpg" 
                 alt="MatriCx Values" 
                 className="w-full h-full object-cover min-h-[600px]"
               />
