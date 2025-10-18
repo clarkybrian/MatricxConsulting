@@ -302,7 +302,7 @@ const Contact: React.FC = () => {
                     <h4 className="font-semibold text-gray-900 text-lg">Adresse complète</h4>
                   </div>
                   <div className="text-gray-600 leading-relaxed mt-3 ml-16">
-                    <p>Makepe Missoke</p>
+                    <p>Makepe BM</p>
                     <p>Douala, Cameroun</p>
                     <p>BP 12777</p>
                   </div>
@@ -346,7 +346,7 @@ const Contact: React.FC = () => {
                   Notre bureau à Douala
                 </h4>
                 <p className="text-gray-700 mb-8 font-medium text-lg">
-                  Makepe Missoke, quartier d'affaires
+                  Makepe BM, quartier d'affaires
                 </p>
                 
                 {/* Bouton itinéraire - Centré et aligné */}

@@ -15,124 +15,163 @@ const ServicesSection: React.FC = () => {
 
   const services = [
     {
-      icon: <BarChart3 className="w-full h-full" />,
-      name: t('services.advisory.name'),
-      description: t('services.advisory.description'),
-      bgColor: "bg-yellow-400",
-      iconBg: "bg-yellow-500/20",
-      iconColor: "text-gray-800",
+      icon: <BarChart3 className="w-8 h-8" />,
+      name: "MatriCx Advisory",
+      description: "Conseil, stratégie, pilotage, amélioration continue, optimisation, CXM...",
       link: "/services/advisory"
     },
     {
-      icon: <Search className="w-full h-full" />,
-      name: t('services.survey.name'),
-      description: t('services.survey.description'),
-      bgColor: "bg-yellow-400", 
-      iconBg: "bg-yellow-500/20",
-      iconColor: "text-gray-800",
+      icon: <Search className="w-8 h-8" />,
+      name: "MatriCx Survey", 
+      description: "Études de marché, connaissance client, stratégie de marché / marque...",
       link: "/services/survey"
     },
     {
-      icon: <Settings className="w-full h-full" />,
-      name: t('services.technology.name'),
-      description: t('services.technology.description'),
-      bgColor: "bg-yellow-400",
-      iconBg: "bg-yellow-500/20",
-      iconColor: "text-gray-800",
-      link: "/services/technology"
+      icon: <GraduationCap className="w-8 h-8" />,
+      name: "MatriCx Training",
+      description: "Leader CX, formation sur mesure, certificats CX, culture centrée client...",
+      link: "/services/training"
     },
     {
-      icon: <GraduationCap className="w-full h-full" />,
-      name: t('services.training.name'),
-      description: t('services.training.description'),
-      bgColor: "bg-yellow-400", 
-      iconBg: "bg-yellow-500/20",
-      iconColor: "text-gray-800",
-      link: "/services/training"
+      icon: <Settings className="w-8 h-8" />,
+      name: "MatriCx Technology",
+      description: "Outils de la relation client, innovation, CRM transformation digitale...",
+      link: "/services/technology"
     }
   ]
 
   return (
-    <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+    <section className="section-padding bg-white">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <div className="inline-flex items-center bg-primary-50 text-primary-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-yellow-200">
             <Sparkles size={16} className="mr-2" />
-            {t('services.header')}
+            Services
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
-            {t('services.title')}
+            Nos domaines d'expertise
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full"></div>
         </div>
 
-        {/* Services MatriCx - Design élégant style Revolut */}
-        <div className="grid grid-cols-2 lg:grid-cols-2 gap-3 lg:gap-6 mb-16">
+        {/* Services Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-6 mb-16">
           {services.map((service, index) => (
-            <div 
+            <Link 
               key={index}
-              className="group cursor-pointer animate-fade-in h-full"
+              to={service.link}
+              className="group block animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className={`${service.bgColor} p-2 sm:p-3 md:p-4 lg:p-8 rounded-2xl lg:rounded-3xl transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-gray-100 h-64 sm:h-72 md:h-80 lg:h-96 flex flex-col overflow-hidden`}>
-                {/* Icône dans un cercle avec couleurs MatriCx */}
-                <div className={`${service.iconBg} ${service.iconColor} w-8 h-8 sm:w-10 sm:h-10 lg:w-16 lg:h-16 rounded-lg lg:rounded-2xl flex items-center justify-center mb-2 lg:mb-6 shadow-sm flex-shrink-0`}>
-                  <div className="w-4 h-4 sm:w-6 sm:h-6 lg:w-10 lg:h-10 flex-shrink-0">
-                    {service.icon}
-                  </div>
+              <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 h-48 md:h-64 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
+                
+                {/* Effet de vague avec shaders et oscillation */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {/* Première vague - Bleu */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent)',
+                      filter: 'blur(1px)',
+                      animation: 'wave-oscillate 2s infinite ease-in-out'
+                    }}
+                  ></div>
+                  
+                  {/* Deuxième vague - Jaune (retardée) */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1200 ease-out delay-200"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.4), transparent)',
+                      filter: 'blur(0.5px)',
+                      animation: 'wave-oscillate-reverse 2.5s infinite ease-in-out'
+                    }}
+                  ></div>
+                  
+                  {/* Troisième vague - Mix */}
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-r from-blue-300/20 via-yellow-300/30 to-blue-300/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1400 ease-out delay-400"
+                    style={{
+                      background: 'linear-gradient(45deg, rgba(147, 197, 253, 0.2), rgba(252, 211, 77, 0.3), rgba(147, 197, 253, 0.2))',
+                      filter: 'blur(2px)',
+                      animation: 'wave-shimmer 3s infinite ease-in-out'
+                    }}
+                  ></div>
                 </div>
                 
-                {/* Titre avec police Montserrat */}
-                <h3 className="text-sm sm:text-base lg:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 lg:mb-4 font-primary text-center overflow-hidden">
-                  <span className="block truncate px-1">
+                {/* Contenu de la card */}
+                <div className="relative z-10 h-full flex flex-col">
+                  {/* Icon - Yellow */}
+                  <div className="text-yellow-400 mb-2 md:mb-4 group-hover:text-yellow-500 transition-colors duration-300">
+                    <div className="w-6 h-6 md:w-8 md:h-8">
+                      {service.icon}
+                    </div>
+                  </div>
+                  
+                  {/* Title - Bold Black */}
+                  <h3 className="text-sm md:text-xl font-bold text-black mb-2 md:mb-3 group-hover:text-gray-900 transition-colors duration-300 leading-tight">
                     {service.name}
-                  </span>
-                </h3>
-                
-                {/* Description */}
-                <div className="flex-grow flex items-center justify-center overflow-hidden px-1">
-                  <p className="text-gray-700 text-xs sm:text-xs lg:text-sm leading-tight text-center overflow-hidden line-clamp-3 sm:line-clamp-4 lg:line-clamp-6">
+                  </h3>
+                  
+                  {/* Description - Regular Black */}
+                  <p className="text-black text-xs md:text-sm leading-relaxed mb-2 md:mb-4 flex-grow group-hover:text-gray-800 transition-colors duration-300 line-clamp-3">
                     {service.description}
                   </p>
-                </div>
-                
-                {/* Bouton "En savoir plus" style MatriCx */}
-                <div className="mt-auto flex justify-center flex-shrink-0 pt-2">
-                  <Link 
-                    to={service.link}
-                    className="inline-flex items-center bg-black/10 hover:bg-black/20 text-gray-900 hover:text-gray-800 font-semibold text-xs lg:text-sm px-2 py-1 lg:px-4 lg:py-2 rounded-md lg:rounded-lg group-hover:translate-x-1 transition-all duration-300 backdrop-blur-sm max-w-full"
-                  >
-                    <span className="font-primary truncate">{t('common.learnMore')}</span>
-                    <ArrowRight size={10} className="ml-1 lg:ml-2 group-hover:translate-x-1 transition-transform duration-300 lg:w-4 lg:h-4 flex-shrink-0" />
-                  </Link>
+                  
+                  {/* En savoir plus avec flèche */}
+                  <div className="flex items-center justify-between text-yellow-600 group-hover:text-yellow-700 transition-colors duration-300">
+                    <span className="text-xs md:text-sm font-medium">
+                      En savoir plus
+                    </span>
+                    <ArrowRight className="w-3 h-3 md:w-4 md:h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
+
+        {/* Styles CSS pour les animations de vagues */}
+        <style jsx>{`
+          @keyframes wave-oscillate {
+            0%, 100% { transform: translateY(0px) skewX(0deg); }
+            25% { transform: translateY(-2px) skewX(1deg); }
+            50% { transform: translateY(0px) skewX(0deg); }
+            75% { transform: translateY(2px) skewX(-1deg); }
+          }
+          
+          @keyframes wave-oscillate-reverse {
+            0%, 100% { transform: translateY(0px) skewX(0deg); }
+            25% { transform: translateY(2px) skewX(-1deg); }
+            50% { transform: translateY(0px) skewX(0deg); }
+            75% { transform: translateY(-2px) skewX(1deg); }
+          }
+          
+          @keyframes wave-shimmer {
+            0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+            33% { opacity: 0.6; transform: scale(1.05) rotate(0.5deg); }
+            66% { opacity: 0.4; transform: scale(0.98) rotate(-0.5deg); }
+          }
+        `}</style>
 
         {/* Bottom CTA */}
         <div className="text-center animate-fade-in animation-delay-600">
           <div className="max-w-2xl mx-auto mb-8">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-              {t('servicesSection.ctaTitle')}
+              Prêt à transformer votre expérience client ?
             </h3>
             <p className="text-xl text-gray-600">
-              {t('servicesSection.ctaSubtitle')}
+              Découvrez comment nos solutions peuvent révolutionner votre approche client.
             </p>
           </div>
-          <button className="btn-primary group inline-flex items-center space-x-2">
-            <span>{t('contact.cta')}</span>
-            <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
-          </button>
+          <Link 
+            to="/contact"
+            className="inline-flex items-center bg-yellow-400 hover:bg-yellow-500 text-black font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 space-x-2"
+          >
+            <span>Nous contacter</span>
+            <ArrowRight size={20} />
+          </Link>
         </div>
-      </div>
-
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary-100 rounded-full opacity-20 blur-3xl -translate-x-1/2 animate-float"></div>
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-secondary-100 rounded-full opacity-20 blur-3xl translate-x-1/2 animate-float animation-delay-400"></div>
       </div>
     </section>
   )
