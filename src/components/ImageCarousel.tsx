@@ -9,12 +9,11 @@ import image6 from '../images/image6.jpg'
 
 const ImageCarousel: React.FC = () => {
   const { t } = useTranslation()
-  const [currentImageIndex, setCurrentImageIndex] = useState(1) // Commencer à 1 pour la première vraie image
-  const [isTransitioning, setIsTransitioning] = useState(true)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const intervalRef = useRef<number | null>(null)
 
   // Images professionnelles de MatriCx Consulting avec traductions
-  const originalImages = [
+  const images = [
     {
       url: image1,
       title: t('carousel.images.0.title'),
@@ -42,88 +41,80 @@ const ImageCarousel: React.FC = () => {
     }
   ]
 
-  // Créer un tableau étendu pour la boucle infinie simple
-  // [dernière image, ...images originales, première image]
-  const images = [
-    originalImages[originalImages.length - 1], // Copie de la dernière image
-    ...originalImages,                          // Toutes les images originales
-    originalImages[0]                          // Copie de la première image
-  ]
-
-  // Fonctions de navigation simples
-  const nextImage = React.useCallback(() => {
-    setIsTransitioning(true)
-    setCurrentImageIndex(prev => prev + 1)
-  }, [])
-
-  const prevImage = React.useCallback(() => {
-    setIsTransitioning(true)
-    setCurrentImageIndex(prev => prev - 1)
-  }, [])
-
-  // Auto-rotation du carrousel simple
+  // Auto-rotation du carousel - plus simple et robuste
   useEffect(() => {
-    intervalRef.current = window.setInterval(() => {
-      nextImage()
-    }, 4000)
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => {
+        const nextIndex = (prev + 1) % images.length
+        return nextIndex
+      })
+    }, 7000) // Augmenté à 12 secondes
+    
+    intervalRef.current = interval
     
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-        intervalRef.current = null
-      }
+      clearInterval(interval)
     }
-  }, [nextImage])
+  }, [images.length])
 
-  // Nettoyage de l'intervalle
-  useEffect(() => {
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current)
-      }
+  // Fonction pour arrêter temporairement l'auto-rotation
+  const resetAutoRotation = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
     }
-  }, [])
+    
+    // Redémarrer après 3 secondes
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentImageIndex(prev => (prev + 1) % images.length)
+      }, 12000) // Augmenté à 12 secondes
+      intervalRef.current = interval
+    }, 3000)
+  }
+
+  // Navigation manuelle avec pause de l'auto-rotation
+  const handlePrevious = () => {
+    resetAutoRotation()
+    setCurrentImageIndex(prev => (prev - 1 + images.length) % images.length)
+  }
+
+  const handleNext = () => {
+    resetAutoRotation()
+    setCurrentImageIndex(prev => (prev + 1) % images.length)
+  }
+
+  const handleDotClick = (index: number) => {
+    resetAutoRotation()
+    setCurrentImageIndex(index)
+  }
 
   return (
     <div className="relative">
       {/* Main Carousel Container - Simple */}
-      <div className="aspect-square bg-gradient-to-br from-primary-500 to-accent-500 rounded-3xl shadow-2xl relative overflow-hidden">
+      <div className="aspect-square bg-gray-100 rounded-3xl shadow-2xl relative overflow-hidden">
         
-        {/* Images Container - Simple et Infini */}
-        <div 
-          className={`flex h-full ${isTransitioning ? 'transition-transform duration-500 ease-in-out' : ''}`}
-          style={{
-            transform: `translateX(-${currentImageIndex * (100 / images.length)}%)`,
-            width: `${images.length * 100}%`
-          }}
-          onTransitionEnd={() => {
-            // Boucle infinie simple : revenir au début/fin sans animation
-            if (currentImageIndex === 0) {
-              setIsTransitioning(false)
-              setCurrentImageIndex(originalImages.length)
-            } else if (currentImageIndex === images.length - 1) {
-              setIsTransitioning(false)
-              setCurrentImageIndex(1)
-            }
-          }}
-        >
+        {/* Images - Une seule image affichée à la fois */}
+        <div className="w-full h-full relative">
           {images.map((image, index) => (
             <div 
               key={`carousel-${index}`}
-              className="w-full h-full relative flex-shrink-0"
-              style={{ width: `${100 / images.length}%` }}
+              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+                currentImageIndex === index 
+                  ? 'opacity-100 z-10' 
+                  : 'opacity-0 z-0'
+              }`}
             >
-              {/* Image Background simple */}
+              {/* Image Background avec fallback */}
               <div 
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute inset-0 bg-cover bg-center bg-gray-200"
                 style={{
                   backgroundImage: `url(${image.url})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center'
                 }}
               >
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary-800/60 via-transparent to-primary-900/50"></div>
+                {/* Overlay léger pour améliorer la lisibilité du texte */}
+                <div className="absolute inset-0 bg-black/20"></div>
               </div>
 
               {/* Content Overlay */}
@@ -143,7 +134,7 @@ const ImageCarousel: React.FC = () => {
 
         {/* Navigation Arrows - Simple */}
         <button
-          onClick={prevImage}
+          onClick={handlePrevious}
           className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 z-20 hover:scale-110"
           aria-label="Image précédente"
         >
@@ -151,7 +142,7 @@ const ImageCarousel: React.FC = () => {
         </button>
 
         <button
-          onClick={nextImage}
+          onClick={handleNext}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300 z-20 hover:scale-110"
           aria-label="Image suivante"
         >
@@ -160,32 +151,23 @@ const ImageCarousel: React.FC = () => {
 
         {/* Dots Indicator - Simple */}
         <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-          {originalImages.map((_, index) => {
-            const actualIndex = index + 1 // +1 car les vraies images commencent à l'index 1
-            const isActive = currentImageIndex === actualIndex || 
-                           (currentImageIndex === 0 && index === originalImages.length - 1) ||
-                           (currentImageIndex === images.length - 1 && index === 0)
-            return (
-              <button
-                key={`dot-${index}`}
-                onClick={() => {
-                  setIsTransitioning(true)
-                  setCurrentImageIndex(actualIndex)
-                }}
-                className={`w-2 h-2 rounded-full transition-all duration-300 hover:scale-125 ${
-                  isActive
-                    ? 'bg-white w-6 shadow-lg'
-                    : 'bg-white/50 hover:bg-white/70'
-                }`}
-                aria-label={`Aller à l'image ${index + 1}`}
-              />
-            )
-          })}
+          {images.map((_, index) => (
+            <button
+              key={`dot-${index}`}
+              onClick={() => handleDotClick(index)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 hover:scale-125 ${
+                currentImageIndex === index
+                  ? 'bg-white w-6 shadow-lg'
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
+              aria-label={`Aller à l'image ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
 
-      {/* Floating Stats Cards MatriCx - Simple */}
-      <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 animate-float border border-primary-100">
+      {/* Floating Stats Cards MatriCx - Simple avec z-index élevé */}
+      <div className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-4 animate-float border border-primary-100 z-30">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
             <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -199,7 +181,7 @@ const ImageCarousel: React.FC = () => {
         </div>
       </div>
 
-      <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-600 border border-accent-100">
+      <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 animate-float animation-delay-600 border border-accent-100 z-30">
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center">
             <svg className="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
