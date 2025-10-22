@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "../../hooks/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -66,9 +67,9 @@ const Advisory: React.FC = () => {
                     Découvrir notre approche
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </button>
-                  <button className="text-white border-2 border-yellow-400 bg-yellow-400/20 hover:border-yellow-300 hover:bg-yellow-400/30 font-medium py-3 px-6 rounded-xl transition-all duration-300">
+                  <Link to="/contact" className="text-white hover:text-white border-2 border-yellow-400 bg-yellow-400/20 hover:border-yellow-300 hover:bg-yellow-400/30 font-medium py-3 px-6 rounded-xl transition-all duration-300">
                     Évaluer votre maturité CX
-                  </button>
+                  </Link>
                 </div>
               </div>
               <div className="relative">
