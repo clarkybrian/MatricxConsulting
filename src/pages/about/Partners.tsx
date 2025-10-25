@@ -91,7 +91,7 @@ const Partners: React.FC = () => {
                 Ils Nous Font Confiance
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Découvrez nos partenaires stratégiques
+                Des partenaires de confiance qui ont choisi notre expertise
               </p>
             </div>
             
@@ -103,7 +103,7 @@ const Partners: React.FC = () => {
         </section>
 
         {/* Types de Partenaires */}
-        <section className="py-20 bg-gray-50">
+        <section className="py-20 bg-white">
           <div className="container-custom">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -118,7 +118,7 @@ const Partners: React.FC = () => {
               {partnerTypes.map((type, index) => (
                 <div 
                   key={index}
-                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow transform hover:-translate-y-1 duration-300"
+                  className="bg-gray-50 p-8 rounded-xl hover:bg-yellow-400/10 transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6">
                     {type.icon}

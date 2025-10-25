@@ -14,7 +14,6 @@ export const translations = {
         training: 'MatriCx Training'
       },
       aboutDropdown: {
-        founder: 'Fondateur',
         company: 'Entreprise',
         careers: 'Carrières',
         experience: 'Expérience',

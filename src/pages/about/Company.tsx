@@ -1,46 +1,11 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { Shield, Heart, Sparkles, Lightbulb, Users, Target, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 
 const Company: React.FC = () => {
-  const { t } = useTranslation();
-
-  const values = [
-    {
-      icon: <Lightbulb className="w-6 h-6" />,
-      name: t('values.innovation.name'),
-      description: t('values.innovation.description'),
-      gradient: "from-yellow-400 to-orange-500",
-      bgColor: "#FDC300",
-      textColor: "text-black"
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      name: t('values.integrity.name'),
-      description: t('values.integrity.description'),
-      gradient: "from-blue-500 to-blue-700",
-      bgColor: "#0080AF",
-      textColor: "text-white"
-    },
-    {
-      icon: <Heart className="w-6 h-6" />,
-      name: t('values.engagement.name'),
-      description: t('values.engagement.description'),
-      gradient: "from-white to-gray-100",
-      bgColor: "#FFFFFF",
-      textColor: "text-black"
-    },
-    {
-      icon: <Sparkles className="w-6 h-6" />,
-      name: t('values.authenticity.name'),
-      description: t('values.authenticity.description'),
-      gradient: "from-gray-800 to-black",
-      bgColor: "#575756",
-      textColor: "text-white"
-    }
-  ];
+  useTranslation(); // Keep the hook call even if we don't use it directly
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -66,162 +31,137 @@ const Company: React.FC = () => {
           </div>
         </section>
 
-        {/* Values Section avec Animation */}
+        {/* Experience Client Section */}
         <section className="py-20 bg-white overflow-hidden">
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-8">
-                  Nos Valeurs
-                </h2>
-                <div className="space-y-8">
-                  {values.map((value, index) => (
-                    <div 
-                      key={index}
-                      className={`p-6 rounded-xl transition-all duration-500 cursor-pointer transform hover:scale-105 bg-gradient-to-r ${value.gradient}`}
-                      style={{ backgroundColor: value.bgColor }}
-                    >
-                      <div className={`flex items-center gap-4 ${value.textColor}`}>
-                        {value.icon}
-                        <div>
-                          <h3 className="text-xl font-bold mb-1">{value.name}</h3>
-                          <p className="opacity-90">{value.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
               <div className="relative">
-                <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform">
+                <div className="rounded-2xl overflow-hidden">
                   <img
-                    src="/values-team.jpg"
+                    src="/equipe.jpg"
                     alt="Notre équipe en action"
-                    className="w-full h-[600px] object-cover"
+                    className="w-full h-[600px] object-cover bg-white"
                   />
                 </div>
               </div>
+              <div className="space-y-8">
+                <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block">
+                  <span className="text-yellow-600 font-semibold">À PROPOS DE NOUS</span>
+                </div>
+                <h2 className="text-4xl font-bold text-gray-900">
+                  Et si l'expérience client n'était qu'un besoin fondamental ?
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Nos consultants vous accompagnent sur des sujets variés tels que les études de marché, 
+                  le conseil en stratégie & finance, l'expérience & la relation client, la voix du client, 
+                  la formation sur les thématiques client, le développement et l'intégration des solutions 
+                  de relation client (Chabots, outil CRM, social listening, etc.).
+                </p>
+                <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors inline-flex items-center group">
+                  DÉCOUVREZ PLUS
+                  <ArrowRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Mission Section */}
+        {/* Notre Équipe Section */}
         <section className="py-20 bg-gray-50">
           <div className="container-custom">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Notre Mission
+              <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block mb-4">
+                <span className="text-yellow-600 font-semibold">NOTRE ÉQUIPE</span>
+              </div>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                Des experts passionnés à votre service
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Transformer l'Afrique à travers l'innovation digitale et l'excellence opérationnelle
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Découvrez les talents qui font de MatriCx Consulting un leader dans la transformation digitale en Afrique.
               </p>
             </div>
-
+            
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  icon: <Target className="w-8 h-8" />,
-                  title: 'Excellence',
-                  description: "Nous visons l'excellence dans chaque projet"
-                },
-                {
-                  icon: <Users className="w-8 h-8" />,
-                  title: 'Collaboration',
-                  description: "Nous croyons en la force du travail d'équipe"
-                },
-                {
-                  icon: <Sparkles className="w-8 h-8" />,
-                  title: 'Innovation',
-                  description: "Nous repoussons les limites de l'innovation"
-                }
-              ].map((item, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                >
-                  <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mb-6">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
-                  <p className="text-gray-600">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Impact Section avec Animation */}
-        <section className="py-20 bg-gray-900 text-white overflow-hidden">
-          <div className="container-custom relative">
-            {/* Éléments de design animés */}
-            <div className="absolute inset-0 overflow-hidden">
-              {[...Array(20)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute animate-float"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 5}s`,
-                    animationDuration: `${5 + Math.random() * 5}s`
-                  }}
-                >
-                  <div className="w-3 h-3 bg-yellow-400/20 rounded-full"></div>
-                </div>
-              ))}
-            </div>
-
-            <div className="relative z-10">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl font-bold mb-6">
-                  Notre Impact
-                </h2>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                  Des résultats concrets qui transforment l'Afrique
+              {/* Expert 1 */}
+              <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <img
+                  src="/team1.jpg"
+                  alt="Amadou Nkongho"
+                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
+                />
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Amadou Nkongho</h3>
+                <p className="text-yellow-600 font-medium mb-4">Responsable Innovation Digitale</p>
+                <p className="text-gray-600">
+                  Expert en solutions CRM et intelligence artificielle, il transforme les défis clients en opportunités de croissance grâce à des stratégies digitales innovantes.
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-4 gap-8">
-                {[
-                  { value: '200+', label: 'Projets Réalisés' },
-                  { value: '15+', label: 'Pays Africains' },
-                  { value: '500+', label: 'Experts Formés' },
-                  { value: '50M€+', label: 'Impact Généré' }
-                ].map((stat, index) => (
-                  <div 
-                    key={index}
-                    className="text-center group transform hover:scale-110 transition-all duration-300"
-                  >
-                    <div className="text-4xl font-bold text-yellow-400 mb-2 group-hover:animate-bounce">
-                      {stat.value}
-                    </div>
-                    <div className="text-gray-300 group-hover:text-yellow-400 transition-colors">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
+              {/* Expert 2 */}
+              <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                <img
+                  src="/team2.jpg"
+                  alt="Marie-Claire Fotso"
+                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
+                />
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Marie-Claire Fotso</h3>
+                <p className="text-yellow-600 font-medium mb-4">Directrice Expérience Client</p>
+                <p className="text-gray-600">
+                  Spécialiste en expérience client, elle révolutionne la relation client en intégrant technologies avancées et approche humaine personnalisée.
+                </p>
+              </div>
+
+              {/* Expert 3 */}
+              <div className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" style={{ animationDelay: '0.6s' }}>
+                <img
+                  src="/team3.jpg"
+                  alt="Jean-Paul Mbarga"
+                  className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
+                />
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Jean-Paul Mbarga</h3>
+                <p className="text-yellow-600 font-medium mb-4">Lead Stratégie Digitale</p>
+                <p className="text-gray-600">
+                  Architecte de solutions digitales, il conçoit des stratégies sur mesure pour optimiser la performance et la croissance de nos clients.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Notre Approche Section */}
         <section className="py-20 bg-white">
           <div className="container-custom">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Rejoignez l'Aventure
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Découvrez les opportunités de carrière et de partenariat chez MatriCx
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-yellow-400 text-black font-semibold px-8 py-4 rounded-xl hover:bg-yellow-300 transition-colors">
-                  Voir les Carrières
-                </button>
-                <button className="bg-gray-900 text-white font-semibold px-8 py-4 rounded-xl hover:bg-gray-800 transition-colors">
-                  Devenir Partenaire
-                </button>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="space-y-8 animate-slide-right">
+                <div className="bg-yellow-400/10 px-4 py-2 rounded-full inline-block">
+                  <span className="text-yellow-600 font-semibold">NOTRE APPROCHE</span>
+                </div>
+                <h2 className="text-4xl font-bold text-gray-900">
+                  Innovation et expertise au service de votre réussite
+                </h2>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Notre approche unique combine expertise technique, compréhension approfondie des marchés africains 
+                  et méthodologies agiles pour garantir des résultats exceptionnels. Nous créons des solutions 
+                  sur mesure qui répondent aux défis spécifiques de votre entreprise.
+                </p>
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="text-3xl font-bold text-yellow-500 mb-2">98%</div>
+                    <div className="text-gray-600">Satisfaction client</div>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <div className="text-3xl font-bold text-yellow-500 mb-2">150+</div>
+                    <div className="text-gray-600">Projets réussis</div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative animate-slide-left">
+                <div className="rounded-2xl overflow-hidden">
+                  <img
+                    src="/innovation.jpg"
+                    alt="Innovation en action"
+                    className="w-full h-[500px] object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>

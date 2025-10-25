@@ -9,7 +9,7 @@ import Advisory from './pages/services/Advisory'
 import Survey from './pages/services/Survey'
 import Technology from './pages/services/Technology'
 import Training from './pages/services/Training'
-import Founder from './pages/about/Founder'
+
 import Company from './pages/about/Company'
 import Careers from './pages/about/Careers'
 import Experience from './pages/about/Experience'
@@ -26,7 +26,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/about/founder" element={<Founder />} />
           <Route path="/about/company" element={<Company />} />
           <Route path="/about/careers" element={<Careers />} />
           <Route path="/about/experience" element={<Experience />} />

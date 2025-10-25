@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from '../hooks/useTranslation'
-import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, User, Building, Briefcase, Award, Monitor, Store, Users, Lightbulb, BarChart, Settings, GraduationCap } from 'lucide-react'
+import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, Building, Briefcase, Award, Monitor, Store, Users, Lightbulb, BarChart, Settings, GraduationCap } from 'lucide-react'
 import logoMatricx from '../images/matricxlogo.png'
 import leadershipImage from '../images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg'
 import innovationImage from '../images/blog/vert1.jpg'
@@ -58,14 +58,7 @@ const Header: React.FC = () => {
                       <div className="grid grid-cols-2 gap-12">
                         {/* Colonne 1 */}
                         <div className="space-y-4">
-                          <Link to="/about/founder" className="flex items-center p-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-md group">
-                            <User size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
-                            <div>
-                              <div className="font-bold text-black">{currentLanguage === 'fr' ? 'Fondateur' : 'Founder'}</div>
-                              <div className="text-sm text-gray-500">{currentLanguage === 'fr' ? 'Rencontrez Didier Tiomela' : 'Meet Didier Tiomela'}</div>
-                            </div>
-                          </Link>
-                          
+
                           <Link to="/about/company" className="flex items-center p-3 rounded-lg text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 hover:shadow-md group">
                             <Building size={20} className="mr-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
                             <div>
@@ -383,13 +376,7 @@ const Header: React.FC = () => {
                 </button>
                 {isMobileAboutOpen && (
                   <div className="ml-4 space-y-2 pb-2">
-                    <Link to="/about/founder" className="flex items-center py-2 px-4 text-sm text-secondary-600 hover:text-primary-600 hover:bg-primary-25 rounded-lg transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
-                      <User size={16} className="mr-3 text-gray-400" />
-                      <div>
-                        <div className="font-medium">{currentLanguage === 'fr' ? 'Fondateur' : 'Founder'}</div>
-                        <div className="text-xs text-gray-500">{currentLanguage === 'fr' ? 'Rencontrez Didier Tiomela' : 'Meet Didier Tiomela'}</div>
-                      </div>
-                    </Link>
+
                     <Link to="/about/company" className="flex items-center py-2 px-4 text-sm text-secondary-600 hover:text-primary-600 hover:bg-primary-25 rounded-lg transition-all duration-300" onClick={() => setIsMenuOpen(false)}>
                       <Building size={16} className="mr-3 text-gray-400" />
                       <div>
