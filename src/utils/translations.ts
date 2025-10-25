@@ -278,7 +278,7 @@ export const translations = {
       }
     },
     footer: {
-      company: "MatriCx CONSULTING",
+      company: "MatriCx consulting",
       description: "Cabinet de conseil spécialisé dans la stratégie & finance, la transformation organisationnelle et l'excellence opérationnelle.",
       quickLinks: "Liens rapides",
       ourServices: "Nos services",
@@ -629,7 +629,7 @@ export const translations = {
       }
     },
     footer: {
-      company: "MatriCx CONSULTING",
+      company: "MatriCx consulting",
       description: "Consulting firm specialized in strategy & finance, organizational transformation and operational excellence.",
       quickLinks: "Quick Links",
       ourServices: "Our services",

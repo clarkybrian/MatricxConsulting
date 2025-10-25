@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "../../hooks/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { advisoryImage } from "../../images/services";
 import {
   ArrowRight,
   Briefcase,
@@ -76,7 +77,7 @@ const Advisory: React.FC = () => {
                 {/* Image principale */}
                 <div className="relative overflow-hidden rounded-3xl">
                   <img
-                    src="/src/images/Nouveau dossier/advisory (2).png"
+                    src={advisoryImage}
                     alt="MatriCx Advisory - Conseil stratégique"
                     className="w-full h-auto object-cover"
                   />

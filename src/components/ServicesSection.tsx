@@ -64,40 +64,7 @@ const ServicesSection: React.FC = () => {
               className="group block animate-fade-in"
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 h-48 md:h-64 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                
-                {/* Effet de vague avec shaders et oscillation */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {/* Première vague - Bleu */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"
-                    style={{
-                      background: 'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent)',
-                      filter: 'blur(1px)',
-                      animation: 'wave-oscillate 2s infinite ease-in-out'
-                    }}
-                  ></div>
-                  
-                  {/* Deuxième vague - Jaune (retardée) */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-yellow-400/40 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1200 ease-out delay-200"
-                    style={{
-                      background: 'linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.4), transparent)',
-                      filter: 'blur(0.5px)',
-                      animation: 'wave-oscillate-reverse 2.5s infinite ease-in-out'
-                    }}
-                  ></div>
-                  
-                  {/* Troisième vague - Mix */}
-                  <div 
-                    className="absolute inset-0 bg-gradient-to-r from-blue-300/20 via-yellow-300/30 to-blue-300/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1400 ease-out delay-400"
-                    style={{
-                      background: 'linear-gradient(45deg, rgba(147, 197, 253, 0.2), rgba(252, 211, 77, 0.3), rgba(147, 197, 253, 0.2))',
-                      filter: 'blur(2px)',
-                      animation: 'wave-shimmer 3s infinite ease-in-out'
-                    }}
-                  ></div>
-                </div>
+              <div className="relative bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 h-48 md:h-64 border border-gray-200 transition-transform duration-300 overflow-hidden">
                 
                 {/* Contenu de la card */}
                 <div className="relative z-10 h-full flex flex-col">

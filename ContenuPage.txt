@@ -3,7 +3,7 @@ En-tête (Header)
 
 Email : contact@matricxconsulting.com
 Téléphone : +237 677 810 120
-Logo : MatriCx CONSULTING
+Logo : MatriCx consulting
 Navigation : ACCUEIL | A PROPOS DE NOUS | NOS SERVICES + | CONTACT | BLOG
 Icône de recherche
 Icône avec points (menu)
@@ -399,7 +399,7 @@ Bouton : (non visible clairement)
 Section Carte
 Carte Google Maps montrant la localisation à Douala, Cameroun (Makepe Palace visible sur la carte)
 Footer
-Logo : MatriCx CONSULTING
+Logo : MatriCx consulting
 Section Nous contacter
 
 Douala , Makepe BM, BP 12777

@@ -1,39 +1,69 @@
-import React from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
-import { ArrowRight, Target, Headphones, Monitor, GraduationCap, BarChart3, Users, Clock } from 'lucide-react'
+import { ArrowRight, Target, Headphones, Monitor, GraduationCap } from 'lucide-react'
 
-const MatrixSection: React.FC = () => {
+const MatrixSection = () => {
   const { t } = useTranslation()
+  const [isVisible, setIsVisible] = useState(false)
+  const [activeIcons, setActiveIcons] = useState<number[]>([])
+  const sectionRef = useRef<HTMLDivElement>(null)
   
-  // Services avec bordures noires élégantes
+  useEffect(() => {
+    if (isVisible) {
+      // Activer tous les éléments en même temps
+      setActiveIcons([0, 1, 2, 3])
+    } else {
+      setActiveIcons([])
+    }
+  }, [isVisible])
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.2 }
+    )
+
+    const currentRef = sectionRef.current
+    if (currentRef) {
+      observer.observe(currentRef)
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef)
+      }
+    }
+  }, [])
+
   const services = [
     {
       title: t('matrixSection.services.strategy.title'),
       description: t('matrixSection.services.strategy.description'),
-      icon: <Target className="w-8 h-8" />
+      icon: <Target className="w-8 h-8" />,
+      iconPosition: 'top'
     },
     {
-      title: t('matrixSection.services.listening.title'),
-      description: t('matrixSection.services.listening.description'),
-      icon: <Headphones className="w-8 h-8" />
+      title: "Écoute client",
+      description: "Capturer et analyser la voix du client",
+      icon: <Headphones className="w-8 h-8" />,
+      iconPosition: 'bottom'
     },
     {
       title: t('matrixSection.services.digital.title'),
       description: t('matrixSection.services.digital.description'),
-      icon: <Monitor className="w-8 h-8" />
+      icon: <Monitor className="w-8 h-8" />,
+      iconPosition: 'top'
     },
     {
-      title: t('matrixSection.services.training.title'),
-      description: t('matrixSection.services.training.description'),
-      icon: <GraduationCap className="w-8 h-8" />
+      title: "Formation CX",
+      description: "Développer la culture client de vos équipes",
+      icon: <GraduationCap className="w-8 h-8" />,
+      iconPosition: 'bottom'
     }
-  ]
-
-  // Statistiques simples
-  const stats = [
-    { icon: <BarChart3 className="w-5 h-5" />, value: "150+", label: t('matrixSection.stats.projects') },
-    { icon: <Users className="w-5 h-5" />, value: "95%", label: t('matrixSection.stats.satisfaction') },
-    { icon: <Clock className="w-5 h-5" />, value: "3 ans", label: t('matrixSection.stats.experience') }
   ]
 
   return (
@@ -54,39 +84,67 @@ const MatrixSection: React.FC = () => {
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-500 mx-auto rounded-full mt-6"></div>
         </div>
 
-        {/* Statistiques avec couleurs primaires */}
-        <div className="flex justify-center items-center space-x-12 mb-16">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center">
-              <div className="flex items-center justify-center mb-2 text-primary-600">
-                {stat.icon}
-              </div>
-              <div className="text-2xl font-bold text-primary-700">{stat.value}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
-            </div>
-          ))}
-        </div>
 
-        {/* Services avec bordures noires élégantes */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8 mb-16">
-          {services.map((service, index) => (
+
+        {/* Timeline horizontale animée */}
+        <div className="relative max-w-5xl mx-auto px-4 mb-16" ref={sectionRef}>
+          {/* Barre de progression fluide */}
+          <div className="absolute h-1 bg-gray-200 top-1/2 left-0 right-0 transform -translate-y-1/2">
             <div 
-              key={index}
-              className="group cursor-pointer h-full"
-            >
-              <div className="bg-white border-2 border-gray-900 p-4 lg:p-8 rounded-2xl transition-all duration-300 hover:bg-gray-50 hover:shadow-xl hover:-translate-y-2 hover:border-primary-600 h-48 sm:h-52 md:h-56 lg:h-64 flex flex-col">
-                <div className="flex justify-center mb-3 lg:mb-6 text-gray-700 group-hover:text-primary-600 transition-colors duration-300 scale-75 lg:scale-100">
-                  {service.icon}
+              className={`h-full bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500 progress-line ${
+                isVisible ? 'active' : ''
+              }`}
+              style={{
+                filter: 'drop-shadow(0 0 10px rgba(253, 195, 0, 0.5))'
+              }}
+            />
+          </div>
+
+          {/* Points de la timeline */}
+          <div className="relative grid grid-cols-4 gap-4">
+            {services.map((service, index) => (
+              <div 
+                key={index}
+                className="timeline-segment"
+              >
+                {/* Point avec icône et contenu */}
+                <div className={`flex flex-col ${service.iconPosition === 'top' ? '' : 'flex-col-reverse'}`}>
+                  <div className={`flex justify-center ${service.iconPosition === 'top' ? 'mb-8' : 'mt-8'}`}>
+                    <div 
+                      className={`service-icon rounded-full bg-white border-4 border-primary-500 flex items-center justify-center shadow-lg
+                        icon-bounce ${activeIcons.includes(index) ? 'active' : ''}`}
+                    >
+                      <div className="text-primary-600 transform transition-transform group-hover:scale-110 icon-wrapper">
+                        {service.icon}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Contenu */}
+                  <div className={`text-center content-fade ${activeIcons.includes(index) ? 'active' : ''}`}>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-2 service-title">
+                      <span className="full-text">{service.title}</span>
+                      <span className="mobile-text">
+                        {index === 0 && "Stratégie"}
+                        {index === 1 && "Écoute"}
+                        {index === 2 && "Digital"}
+                        {index === 3 && "Formation"}
+                      </span>
+                    </h3>
+                    <p className="text-sm text-gray-600 service-description">
+                      {service.description}
+                    </p>
+                    <p className="text-xs text-gray-600 mobile-description">
+                      {index === 0 && "Vision client"}
+                      {index === 1 && "Voix du client"}
+                      {index === 2 && "Outils CRM"}
+                      {index === 3 && "Culture CX"}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-sm lg:text-lg font-semibold text-gray-900 mb-2 lg:mb-3 group-hover:text-primary-700 transition-colors duration-300 text-center">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-xs lg:text-sm leading-relaxed flex-grow text-center">
-                  {service.description}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* CTA avec animation */}
@@ -96,13 +154,13 @@ const MatrixSection: React.FC = () => {
             <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform duration-300" />
           </button>
         </div>
-      </div>
 
-      {/* Éléments de fond animés */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary-100 rounded-full opacity-30 blur-3xl -translate-x-1/2 animate-float"></div>
-        <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-secondary-100 rounded-full opacity-30 blur-3xl translate-x-1/2 animate-float animation-delay-400"></div>
-        <div className="absolute top-0 right-1/4 w-64 h-64 bg-blue-100 rounded-full opacity-20 blur-3xl animate-float animation-delay-800"></div>
+        {/* Éléments de fond animés */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary-100 rounded-full opacity-30 blur-3xl -translate-x-1/2 animate-float"></div>
+          <div className="absolute bottom-1/4 right-0 w-80 h-80 bg-secondary-100 rounded-full opacity-30 blur-3xl translate-x-1/2 animate-float animation-delay-400"></div>
+          <div className="absolute top-0 right-1/4 w-64 h-64 bg-blue-100 rounded-full opacity-20 blur-3xl animate-float animation-delay-800"></div>
+        </div>
       </div>
     </section>
   )

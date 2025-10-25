@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { trainingImage } from "../../images/services";
 import {
   ArrowRight,
   GraduationCap,
@@ -107,7 +108,7 @@ const Training: React.FC = () => {
                 {/* Image principale */}
                 <div className="relative overflow-hidden rounded-3xl">
                   <img
-                    src="/src/images/Nouveau dossier/Training2.png"
+                    src={trainingImage}
                     alt="MatriCx Training - Formation et certification"
                     className="w-full h-auto object-cover"
                   />

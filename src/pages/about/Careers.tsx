@@ -55,12 +55,26 @@ const Careers: React.FC = () => {
   ];
 
   const values = [
-    'Excellence',
-    'Innovation',
-    'Collaboration',
-    'Intégrité',
-    'Impact Social',
-    'Diversité'
+    {
+      name: 'Innovation',
+      color: '#FDC300', // Jaune
+      textColor: 'text-black'
+    },
+    {
+      name: 'Intégrité',
+      color: '#0080AF', // Bleu
+      textColor: 'text-white'
+    },
+    {
+      name: 'Engagement',
+      color: '#FFFFFF', // Blanc
+      textColor: 'text-black'
+    },
+    {
+      name: 'Authenticité',
+      color: '#575756', // Gris foncé
+      textColor: 'text-white'
+    }
   ];
 
   return (
@@ -167,10 +181,17 @@ const Careers: React.FC = () => {
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-2 gap-8">
                 {values.map((value, index) => (
-                  <div key={index} className="text-center p-6 bg-gray-50 rounded-xl">
-                    <h3 className="text-xl font-bold text-gray-900">{value}</h3>
+                  <div 
+                    key={index} 
+                    className={`text-center p-8 rounded-xl shadow-lg transition-transform hover:transform hover:scale-105`}
+                    style={{ 
+                      backgroundColor: value.color,
+                      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.2)'
+                    }}
+                  >
+                    <h3 className={`text-2xl font-bold ${value.textColor} mb-2`}>{value.name}</h3>
                   </div>
                 ))}
               </div>

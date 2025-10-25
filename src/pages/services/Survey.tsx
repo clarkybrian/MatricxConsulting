@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { surveyImage } from "../../images/services";
 import {
   ArrowRight,
   TrendingUp,
@@ -154,7 +155,7 @@ const Survey: React.FC = () => {
                 {/* Image principale */}
                 <div className="relative overflow-hidden rounded-3xl">
                   <img
-                    src="/src/images/Nouveau dossier/survey.png"
+                    src={surveyImage}
                     alt="MatriCx Survey - Études et analyses"
                     className="w-full h-auto object-cover"
                   />

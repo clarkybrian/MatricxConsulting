@@ -5,6 +5,7 @@ import { Menu, X, Mail, Languages, ChevronDown, ChevronRight, User, Building, Br
 import logoMatricx from '../images/matricxlogo.png'
 import leadershipImage from '../images/blog/WhatsApp Image 2025-10-15 à 16.38.04_8110d4ba.jpg'
 import innovationImage from '../images/blog/vert1.jpg'
+import './Header.css'
 
 const Header: React.FC = () => {
   const { t, currentLanguage, changeLanguage } = useTranslation()

@@ -6,6 +6,30 @@ export default {
   ],
   theme: {
     extend: {
+      keyframes: {
+        'gradient-flow': {
+          '0%, 100%': {
+            'stop-color': 'var(--tw-gradient-from)',
+          },
+          '50%': {
+            'stop-color': 'var(--tw-gradient-to)',
+          },
+        },
+        'bounce-gentle': {
+          '0%, 100%': {
+            transform: 'translateY(-5%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+        },
+      },
+      animation: {
+        'gradient-flow': 'gradient-flow 3s ease infinite',
+        'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite',
+      },
       colors: {
         // MatriCx Brand Primary - Jaune
         primary: {

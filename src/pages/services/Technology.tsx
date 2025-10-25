@@ -2,6 +2,7 @@ import React from "react";
 import { useTranslation } from "../../hooks/useTranslation";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { technologyImage } from "../../images/services";
 import {
   ArrowRight,
   Lightbulb,
@@ -105,7 +106,7 @@ const Technology: React.FC = () => {
                 {/* Image principale */}
                 <div className="relative overflow-hidden rounded-3xl">
                   <img
-                    src="/src/images/Nouveau dossier/technologie.png"
+                    src={technologyImage}
                     alt="MatriCx Technology - Solutions technologiques"
                     className="w-full h-auto object-cover"
                   />
