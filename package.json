@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node scripts/generate-sitemap.cjs && tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "generate-icons": "node generate-icons.js",

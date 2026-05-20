@@ -78,7 +78,12 @@ const Blog: React.FC = () => {
     5: whatsapp2,
     6: whatsapp3,
     7: whatsapp4,
-    8: whatsapp5
+    8: whatsapp5,
+    9: vert1,
+    10: vert2,
+    11: vert3,
+    12: whatsapp4,
+    13: designersImage
   }
 
   // Articles professionnels avec focus africain (générés depuis les données)

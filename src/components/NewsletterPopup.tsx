@@ -62,11 +62,7 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
         body: JSON.stringify({
           email: email,
           listIds: [BREVO_LIST_ID],
-          updateEnabled: false,
-          attributes: {
-            SOURCE: 'Website Popup',
-            SIGNUP_DATE: new Date().toISOString()
-          }
+          updateEnabled: false
         })
       })
 
@@ -115,6 +111,7 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
           {/* Close Button */}
           <button
             onClick={handleClose}
+            type="button"
             className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
             aria-label="Fermer"
           >
