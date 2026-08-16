@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { lazy, Suspense } from 'react'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
@@ -65,6 +66,7 @@ function App() {
           </Routes>
         </Suspense>
       </div>
+      <Analytics />
     </Router>
   )
 }
