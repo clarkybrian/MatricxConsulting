@@ -1,5 +1,7 @@
 # Configuration Brevo (Sendinblue) pour la Newsletter
 
+> ⚠️ **Doc partiellement obsolète (août 2026)** : le site est désormais hébergé sur **Vercel** et l'inscription passe par la fonction serverless [`api/subscribe-newsletter.js`](../api/subscribe-newsletter.js). La clé API n'est **plus** exposée côté client : configurez `BREVO_API_KEY` et `BREVO_LIST_ID` (sans préfixe `VITE_`) dans les variables d'environnement Vercel. Les sections ci-dessous mentionnant `VITE_BREVO_API_KEY` ne s'appliquent plus.
+
 ## Étape 1 : Créer un compte Brevo
 
 1. **Allez sur** : https://www.brevo.com/

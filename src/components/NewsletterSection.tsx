@@ -24,19 +24,13 @@ export default function NewsletterSection() {
     setStatus('loading');
 
     try {
-      // Appel API Brevo pour ajouter le contact à la liste newsletter
-      const response = await fetch('https://api.brevo.com/v3/contacts', {
+      // Appel de la fonction serverless (la clé API Brevo reste côté serveur)
+      const response = await fetch('/api/subscribe-newsletter', {
         method: 'POST',
         headers: {
-          'accept': 'application/json',
-          'content-type': 'application/json',
-          'api-key': import.meta.env.VITE_BREVO_API_KEY || ''
+          'content-type': 'application/json'
         },
-        body: JSON.stringify({
-          email: email,
-          listIds: [parseInt(import.meta.env.VITE_BREVO_LIST_ID || '3')],
-          updateEnabled: true
-        })
+        body: JSON.stringify({ email })
       });
 
       if (response.ok || response.status === 204) {

@@ -44,26 +44,13 @@ const NewsletterPopup: React.FC<NewsletterPopupProps> = ({ delay = 5000 }) => {
         return
       }
 
-      // Appel API Brevo pour ajouter le contact à la liste newsletter
-      const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
-      const BREVO_LIST_ID = parseInt(import.meta.env.VITE_BREVO_LIST_ID || '3');
-
-      if (!BREVO_API_KEY) {
-        throw new Error('Clé API Brevo non configurée');
-      }
-
-      const response = await fetch('https://api.brevo.com/v3/contacts', {
+      // Appel de la fonction serverless (la clé API Brevo reste côté serveur)
+      const response = await fetch('/api/subscribe-newsletter', {
         method: 'POST',
         headers: {
-          'accept': 'application/json',
-          'api-key': BREVO_API_KEY,
           'content-type': 'application/json'
         },
-        body: JSON.stringify({
-          email: email,
-          listIds: [BREVO_LIST_ID],
-          updateEnabled: false
-        })
+        body: JSON.stringify({ email })
       })
 
       if (response.ok) {
