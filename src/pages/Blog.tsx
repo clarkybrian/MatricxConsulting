@@ -25,7 +25,8 @@ const Blog: React.FC = () => {
   const { currentLanguage } = useTranslation()
   const { posts: sanityPosts } = useSanityBlogPosts()
   const [selectedTopic, setSelectedTopic] = useState('all')
-  const [sortBy, setSortBy] = useState<'popular' | 'recent' | 'oldest'>('popular')
+  // Par défaut, les articles les plus récents en premier.
+  const [sortBy, setSortBy] = useState<'popular' | 'recent' | 'oldest'>('recent')
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null)
   const [showPopularDropdown, setShowPopularDropdown] = useState(false)
   const [showDateDropdown, setShowDateDropdown] = useState(false)

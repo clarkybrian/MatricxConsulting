@@ -47,6 +47,8 @@ const POST_AVEC_ASSET = {
   _id: 'post-avec-image',
   slug: { _type: 'slug', current: 'article-avec-image' },
   title: { fr: 'Article avec image', en: 'Post with image' },
+  // Date distincte et plus récente : le test de tri a besoin d'un ordre non ambigu.
+  publishedAt: '2026-08-26T09:00:00.000Z',
   mainImage: {
     _type: 'image',
     alt: 'photo',
@@ -254,6 +256,51 @@ async function testDocumentsIncompletsEtInvalides(browser) {
   });
 }
 
+async function testTriParDefautRecent(browser) {
+  currentTest = 'Liste /blog — tri par défaut du plus récent au plus ancien';
+  console.log(`\n▶ ${currentTest}`);
+
+  await withPage(browser, 'jeu-complet', async (page, { pageErrors }) => {
+    await page.goto(`${BASE}/blog`, { waitUntil: 'networkidle2', timeout: 30000 });
+    await settle(page);
+
+    check('aucune exception non capturée', pageErrors.length === 0, pageErrors.join(' | '));
+
+    // Le bouton de tri doit afficher "Récent" au chargement, pas "Populaire".
+    const libelle = await page.evaluate(() => document.body.innerText);
+    check('le filtre affiche « Récent » par défaut',
+      /Trier par :[\s\S]{0,40}Récent/.test(libelle) || libelle.includes('Récent'),
+      'libellé de tri introuvable');
+
+    // Les annees affichees doivent decroitre. Un article sans date de
+    // publication (champ vide dans le Studio) n'en affiche aucune : il est
+    // classe en dernier, ce qui est le comportement attendu.
+    const annees = await page.$$eval('article', (arts) =>
+      arts.map((a) => {
+        const m = a.innerText.match(/\b(\d{1,2})\s+(\S+)\s+(\d{4})\b/);
+        return m ? Number(m[3]) : null;
+      })
+    );
+    const avecDate = annees.filter((a) => a !== null);
+    check('la majorité des cartes portent une date', avecDate.length >= annees.length - 1,
+      JSON.stringify(annees));
+    check('les cartes sans date sont reléguées en fin de liste',
+      annees.findIndex((a) => a === null) === -1 ||
+      annees.slice(annees.findIndex((a) => a === null)).every((a) => a === null),
+      JSON.stringify(annees));
+    check('les années sont décroissantes',
+      avecDate.every((a, i) => i === 0 || avecDate[i - 1] >= a), JSON.stringify(avecDate));
+
+    // Ordre explicite entre deux articles Sanity de dates distinctes.
+    const titres = await page.$$eval('article h3', (hs) => hs.map((h) => h.innerText));
+    const iRecent = titres.findIndex((t) => t.includes('Article avec image'));   // 26 août 2026
+    const iAncien = titres.findIndex((t) => t.includes('Developpeur IA'));       // 24 août 2026
+    check('le plus récent précède le plus ancien',
+      iRecent !== -1 && iAncien !== -1 && iRecent < iAncien,
+      `position récent=${iRecent} ancien=${iAncien}`);
+  });
+}
+
 async function testTriStable(browser) {
   currentTest = 'Liste /blog — l’ordre des articles est stable';
   console.log(`\n▶ ${currentTest}`);
@@ -328,6 +375,7 @@ async function testAccesDirectRoutes(browser) {
     await testArticleAvecImageSansAsset(browser);
     await testArticleAvecVraieImage(browser);
     await testDocumentsIncompletsEtInvalides(browser);
+    await testTriParDefautRecent(browser);
     await testTriStable(browser);
     await testSanityIndisponible(browser);
   } finally {
