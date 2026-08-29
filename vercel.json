@@ -5,7 +5,11 @@
   "framework": "vite",
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "comment": "Repli SPA pour les routes applicatives. /assets/ est exclu : un chunk supprimé par un déploiement doit renvoyer un vrai 404, sinon un onglet resté ouvert sur l'ancienne version reçoit du HTML en 200 et échoue au parsing JS.",
+      "source": "/((?!api/|assets/).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {

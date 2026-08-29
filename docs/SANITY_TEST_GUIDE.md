@@ -26,7 +26,7 @@ Vérifiez que `.env.local` existe et contient :
 VITE_SANITY_PROJECT_ID=ozf76xbs
 VITE_SANITY_DATASET=production
 VITE_SANITY_API_VERSION=2024-11-19
-VITE_SANITY_TOKEN=skUf4RVapCNjIArx7nmFYwZWhZZcJvC6zzmn1YqzZoIsjrjxMMdRDNcqf5LWFmDvd2qO42C3nthKakUvyWd8CkPXtRYe9ibSWIKw38v1rqWXTV3mNDdzdCgRtWqasA1NSVwzOsjRVS3BeaVmBzHAD3oYYZ6wGkU20mc5cPGLROHIWJ1slPCn
+VITE_SANITY_TOKEN=<VOTRE_TOKEN_SANITY>   # a definir en variable d environnement, jamais en clair
 ```
 
 ---
