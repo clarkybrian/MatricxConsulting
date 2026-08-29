@@ -6,18 +6,16 @@ import { Mail, ArrowRight, TrendingUp } from 'lucide-react'
 import ImageCarousel from './ImageCarousel'
 
 const HeroSection: React.FC = () => {
-  const { t, currentLanguage } = useTranslation()
+  const { t } = useTranslation()
   const { homeStats } = useSanityHomeStats()
   
   // Statistiques - données Sanity ou fallback
-  const stats = (homeStats && homeStats.length > 0) ? homeStats.map(stat => ({
-    value: stat.value,
-    label: { fr: stat.label.fr, en: stat.label.en }
-  })) : [
-    { value: '100+', label: { fr: t('hero.stats.clients'), en: t('hero.stats.clients') } },
-    { value: '3 ans', label: { fr: t('hero.stats.experience'), en: t('hero.stats.experience') } },
-    { value: '95%', label: { fr: t('hero.stats.satisfaction'), en: t('hero.stats.satisfaction') } }
+  const stats = [
+    { value: homeStats?.clients || '100+', label: t('hero.stats.clients') },
+    { value: homeStats?.experience || '3 ans', label: t('hero.stats.experience') },
+    { value: homeStats?.satisfaction || '95%', label: t('hero.stats.satisfaction') }
   ]
+
 
   return (
     <section id="home" className="relative flex items-center bg-gradient-to-br from-primary-50 via-white to-accent-50 overflow-hidden pt-32 pb-8 lg:pb-12 section-transition">
@@ -88,7 +86,7 @@ const HeroSection: React.FC = () => {
                 <div key={index} className="text-center">
                   <div className="text-xl lg:text-2xl font-bold text-primary-600">{stat.value}</div>
                   <div className="text-xs lg:text-sm text-gray-600">
-                    {stat.label[currentLanguage as 'fr' | 'en'] || stat.label.fr}
+                    {stat.label}
                   </div>
                 </div>
               ))}

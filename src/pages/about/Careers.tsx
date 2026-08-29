@@ -1,4 +1,5 @@
 import React from 'react';
+import { localizedText } from '../../lib/localized'
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Users, Laptop, GraduationCap, Heart, ArrowRight, ChevronRight } from 'lucide-react';
@@ -231,26 +232,26 @@ Cordialement,
                     <div className="flex items-center justify-between gap-6">
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-gray-900 mb-2">
-                          {currentLanguage === 'fr' ? job.title.fr : job.title.en}
+                          {localizedText(job.title, currentLanguage as 'fr' | 'en', currentLanguage === 'fr' ? 'Poste à pourvoir' : 'Open position')}
                         </h3>
                         <div className="flex items-center gap-4 text-gray-600">
-                          <span>{currentLanguage === 'fr' ? job.location.fr : job.location.en}</span>
-                          <span>•</span>
-                          <span>{job.type}</span>
-                          <span>•</span>
-                          <span>{currentLanguage === 'fr' ? job.experience.fr : job.experience.en}</span>
+                          {localizedText(job.location, currentLanguage as 'fr' | 'en') && (
+                            <><span>{localizedText(job.location, currentLanguage as 'fr' | 'en')}</span><span>•</span></>
+                          )}
+                          {job.type && (<><span>{job.type}</span><span>•</span></>)}
+                          <span>{localizedText(job.experience, currentLanguage as 'fr' | 'en', currentLanguage === 'fr' ? 'Expérience non précisée' : 'Experience not specified')}</span>
                         </div>
-                        {job.description && (
+                        {localizedText(job.description, currentLanguage as 'fr' | 'en') && (
                           <p className="mt-3 text-gray-600 text-sm">
-                            {currentLanguage === 'fr' ? job.description.fr : job.description.en}
+                            {localizedText(job.description, currentLanguage as 'fr' | 'en')}
                           </p>
                         )}
                       </div>
                       <a 
                         href={createApplicationEmail(
-                          currentLanguage === 'fr' ? job.title.fr : job.title.en,
-                          currentLanguage === 'fr' ? job.location.fr : job.location.en,
-                          job.type
+                          localizedText(job.title, currentLanguage as 'fr' | 'en', 'Candidature'),
+                          localizedText(job.location, currentLanguage as 'fr' | 'en'),
+                          job.type || ''
                         )}
                         className="bg-yellow-400 text-black hover:text-black font-semibold px-6 py-3 rounded-lg hover:bg-yellow-500 transition-all duration-300 flex items-center gap-2 whitespace-nowrap shadow-md hover:shadow-lg transform hover:scale-105"
                       >

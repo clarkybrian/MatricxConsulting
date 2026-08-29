@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import { useTranslation } from '../hooks/useTranslation'
 import { useSanityPartners } from '../hooks/useSanityContent'
+import { safeImageUrl } from '../lib/sanity'
 import finexsLogo from '../images/finexs.png'
 import matricxLogo from '../images/logomatricx.png'
 import matrixLogo from '../images/matrix.png'
@@ -10,7 +11,7 @@ import hotelLogo from '../images/hotel.png'
 
 const PartnersCarousel: React.FC = () => {
   const { t } = useTranslation()
-  const { partners: sanityPartners, urlFor } = useSanityPartners()
+  const { partners: sanityPartners } = useSanityPartners()
   const [isHovered, setIsHovered] = useState(false)
   
   const handleMouseEnter = useCallback(() => setIsHovered(true), [])
@@ -57,13 +58,18 @@ const PartnersCarousel: React.FC = () => {
   ]
 
   // Mapper les partenaires Sanity
-  const sanityMappedPartners = (sanityPartners && sanityPartners.length > 0) ? sanityPartners.map(partner => ({
-    type: partner.logo ? 'image' as const : 'text' as const,
-    src: partner.logo ? urlFor(partner.logo).height(80).fit('max').url() : '',
-    alt: partner.name,
-    name: partner.name,
-    website: partner.website
-  })) : []
+  const sanityMappedPartners = (sanityPartners && sanityPartners.length > 0) ? sanityPartners.map(partner => {
+    // Un logo sans asset (nom saisi, fichier jamais uploadé) doit basculer
+    // sur le rendu texte, pas faire lever urlFor().
+    const logoUrl = safeImageUrl(partner.logo, (b) => b.height(80).fit('max'))
+    return {
+      type: logoUrl ? 'image' as const : 'text' as const,
+      src: logoUrl || '',
+      alt: partner.name,
+      name: partner.name,
+      website: partner.website
+    }
+  }) : []
 
   // Utiliser Sanity si disponible, sinon fallback
   const partners = sanityMappedPartners.length > 0 ? sanityMappedPartners : defaultPartners

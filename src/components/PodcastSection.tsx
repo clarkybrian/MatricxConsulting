@@ -33,13 +33,10 @@ const PodcastSection: React.FC = () => {
   }, [])
 
   // Stats - données Sanity ou fallback
-  const stats = (podcastStats && podcastStats.length > 0) ? podcastStats.map(stat => ({
-    value: stat.value,
-    label: stat.label[currentLanguage as 'fr' | 'en'] || stat.label.fr
-  })) : [
-    { value: '20+', label: 'Épisodes' },
-    { value: '5K+', label: 'Auditeurs' },
-    { value: '4.8⭐', label: 'Note' }
+  const stats = [
+    { value: podcastStats?.episodes || '20+', label: currentLanguage === 'fr' ? 'Épisodes' : 'Episodes' },
+    { value: podcastStats?.listeners || '5K+', label: currentLanguage === 'fr' ? 'Auditeurs' : 'Listeners' },
+    { value: podcastStats?.rating || '4.8⭐', label: currentLanguage === 'fr' ? 'Note' : 'Rating' }
   ]
 
   return (

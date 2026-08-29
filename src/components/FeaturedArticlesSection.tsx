@@ -4,6 +4,7 @@ import { useTranslation } from '../hooks/useTranslation'
 import { useSanityBlogPosts } from '../hooks/useSanityBlogPosts'
 import { Calendar, ArrowRight, ChevronLeft, ChevronRight, Newspaper } from 'lucide-react'
 import { urlFor } from '../lib/sanity'
+import { localizedText, localizedPlainText } from '../lib/localized'
 
 // Import des images fallback
 import vert1 from '../images/blog/vert1.jpg'
@@ -119,24 +120,12 @@ const FeaturedArticlesSection: React.FC = () => {
   }
 
   // Obtenir le titre selon la langue
-  const getTitle = (article: any) => {
-    if (typeof article.title === 'object') {
-      return article.title[currentLanguage] || article.title.fr
-    }
-    return article.title
-  }
+  const getTitle = (article: any) =>
+    localizedText(article.title, currentLanguage as 'fr' | 'en', currentLanguage === 'fr' ? 'Sans titre' : 'Untitled')
 
   // Obtenir l'extrait selon la langue
-  const getExcerpt = (article: any) => {
-    if (typeof article.excerpt === 'object') {
-      const excerpt = article.excerpt[currentLanguage] || article.excerpt.fr
-      if (Array.isArray(excerpt)) {
-        return excerpt.map((block: any) => block.children?.map((child: any) => child.text).join('')).join(' ')
-      }
-      return excerpt
-    }
-    return article.excerpt
-  }
+  const getExcerpt = (article: any) =>
+    localizedPlainText(article.excerpt, currentLanguage as 'fr' | 'en')
 
   if (loading) {
     return (

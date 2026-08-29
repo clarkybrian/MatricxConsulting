@@ -4,10 +4,12 @@ import Footer from '../../components/Footer';
 import { ArrowRight, MapPin, Mail, Phone } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useSanityTeamMembers } from '../../hooks/useSanityContent';
+import { safeImageUrl } from '../../lib/sanity'
+import { localizedText } from '../../lib/localized'
 
 const Company: React.FC = () => {
   const { t, currentLanguage } = useTranslation();
-  const { teamMembers, urlFor } = useSanityTeamMembers();
+  const { teamMembers } = useSanityTeamMembers();
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -164,9 +166,9 @@ const Company: React.FC = () => {
                     className="bg-white rounded-xl p-6 transition-all duration-300 hover:shadow-lg animate-fade-in" 
                     style={{ animationDelay: `${(index + 1) * 0.2}s` }}
                   >
-                    {member.photo ? (
+                    {safeImageUrl(member.photo, (b) => b.width(200).height(200).fit('crop')) ? (
                       <img
-                        src={urlFor(member.photo).width(200).height(200).url()}
+                        src={safeImageUrl(member.photo, (b) => b.width(200).height(200).fit('crop')) as string}
                         alt={member.name}
                         className="w-32 h-32 rounded-full mx-auto mb-6 object-cover border-4 border-yellow-400"
                       />
@@ -177,10 +179,10 @@ const Company: React.FC = () => {
                     )}
                     <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
                     <p className="text-yellow-600 font-medium mb-4">
-                      {member.position[currentLanguage as 'fr' | 'en'] || member.position.fr}
+                      {localizedText(member.position, currentLanguage as 'fr' | 'en')}
                     </p>
                     <p className="text-gray-600">
-                      {member.description[currentLanguage as 'fr' | 'en'] || member.description.fr}
+                      {localizedText(member.description, currentLanguage as 'fr' | 'en')}
                     </p>
                   </div>
                   );

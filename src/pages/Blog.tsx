@@ -4,6 +4,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { useTranslation } from '../hooks/useTranslation'
 import { useSanityBlogPosts } from '../hooks/useSanityBlogPosts'
+import { safeImageUrl } from '../lib/sanity'
 import { blogArticles } from '../data/blogArticlesData'
 import { Calendar, User, ArrowRight, TrendingUp, Users, Lightbulb, Target, BarChart3, Briefcase, Flame, Clock, Facebook, Linkedin, Twitter } from 'lucide-react'
 
@@ -102,36 +103,59 @@ const Blog: React.FC = () => {
     isSanity: false
   }))
 
+  // Mapping des catégories Sanity vers les catégories existantes
+  const categoryMap: { [key: string]: string } = {
+    'cx': 'transformation',
+    'strategie': 'innovation',
+    'digital': 'transformation',
+    'formation': 'leadership',
+    'etudes': 'consulting'
+  }
+
+  // Un champ localisé peut être absent, vide, ou déjà une simple chaîne
+  // selon l'ancienneté du document : on normalise sans jamais déréférencer null.
+  const localized = (field: any, fallback = ''): string => {
+    if (!field) return fallback
+    if (typeof field === 'string') return field
+    return field[currentLanguage as 'fr' | 'en'] || field.fr || field.en || fallback
+  }
+
+  // Popularité déterministe dérivée de l'_id : Math.random() était réévalué
+  // à chaque render et faisait sauter l'ordre des articles à chaque frappe.
+  const pseudoViews = (id: string): number => {
+    let h = 0
+    for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) | 0
+    return 1000 + Math.abs(h) % 5000
+  }
+
   // Mapper les articles Sanity vers le format existant
   const sanityMappedArticles = sanityPosts.map((post: any, index: number) => {
-    // Mapping des catégories Sanity vers les catégories existantes
-    const categoryMap: { [key: string]: string } = {
-      'cx': 'transformation',
-      'strategie': 'innovation',
-      'digital': 'transformation',
-      'formation': 'leadership',
-      'etudes': 'consulting'
-    }
+    const published = post.publishedAt ? new Date(post.publishedAt) : null
+    const dateValue = published && !isNaN(published.getTime()) ? published : new Date(0)
 
     return {
       id: 1000 + index, // ID unique pour éviter les conflits
-      title: post.title[currentLanguage as 'fr' | 'en'] || post.title.fr,
-      excerpt: post.excerpt?.[currentLanguage as 'fr' | 'en'] || post.excerpt?.fr || '',
-      date: new Date(post.publishedAt).toLocaleDateString(currentLanguage === 'fr' ? 'fr-FR' : 'en-US', { 
-        day: 'numeric', 
-        month: 'short', 
-        year: 'numeric' 
-      }),
-      dateValue: new Date(post.publishedAt),
+      title: localized(post.title, currentLanguage === 'fr' ? 'Sans titre' : 'Untitled'),
+      excerpt: localized(post.excerpt),
+      date: dateValue.getTime() === 0
+        ? ''
+        : dateValue.toLocaleDateString(currentLanguage === 'fr' ? 'fr-FR' : 'en-US', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric'
+          }),
+      dateValue,
       author: post.author || 'MatriCx Consulting',
       category: categoryMap[post.category] || 'transformation',
-      readTime: '6 min', // Valeur par défaut
-      image: post.mainImage ? post.mainImage : whatsapp1, // Fallback image
-      views: Math.floor(Math.random() * 5000) + 1000, // Vue aléatoire pour le tri
+      readTime: post.readTime || '6 min',
+      // safeImageUrl renvoie null si l'image n'a pas d'asset (alt saisi mais
+      // aucun fichier uploadé) : on retombe alors sur l'image locale.
+      image: safeImageUrl(post.mainImage, (b) => b.width(600).height(400).fit('crop')) || whatsapp1,
+      views: pseudoViews(post._id || String(index)),
       slug: post.slug?.current, // Slug pour les articles Sanity
       isSanity: true // Flag pour identifier les articles Sanity
     }
-  })
+  }).filter((a: any) => Boolean(a.slug))
 
   // Fusionner les articles Sanity avec les articles hardcodés
   const allArticles = sanityPosts.length > 0 

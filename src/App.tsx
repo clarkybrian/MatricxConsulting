@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 import { lazy, Suspense } from 'react'
 import ScrollToTop from './components/ScrollToTop'
+import ErrorBoundary, { PageErrorFallback } from './components/ErrorBoundary'
 import Home from './pages/Home'
 
 // Lazy loaded components
@@ -30,17 +31,21 @@ const Partners = lazy(() => import('./pages/about/Partners'))
 const Sustainability = lazy(() => import('./pages/about/Sustainability'))
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'))
 const TermsOfService = lazy(() => import('./pages/TermsOfService'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Suspense fallback={null}>
-        <NewsletterPopup delay={5000} />
-        <CookieConsent />
-      </Suspense>
+      <ErrorBoundary zone="widgets">
+        <Suspense fallback={null}>
+          <NewsletterPopup delay={5000} />
+          <CookieConsent />
+        </Suspense>
+      </ErrorBoundary>
       <div className="App">
         <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="w-10 h-10 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+          <ErrorBoundary zone="routes" fallback={<PageErrorFallback />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -63,7 +68,9 @@ function App() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
+          </ErrorBoundary>
         </Suspense>
       </div>
       <Analytics />

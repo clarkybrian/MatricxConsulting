@@ -7,7 +7,7 @@ import { useSanityBlogPost } from '../hooks/useSanityBlogPosts'
 import { getArticleBySlug, ContentBlock } from '../data/blogArticlesData'
 import { Calendar, User, ArrowLeft, Clock, Facebook, Linkedin, Twitter } from 'lucide-react'
 import { PortableText } from '@portabletext/react'
-import { urlFor } from '../lib/sanity'
+import { safeImageUrl } from '../lib/sanity'
 
 // Composant pour rendre le contenu local (non-Sanity)
 const LocalContentRenderer: React.FC<{ blocks: ContentBlock[] }> = ({ blocks }) => {
@@ -77,25 +77,37 @@ const BlogPost: React.FC = () => {
   // Données communes pour le rendu
   const lang = currentLanguage as 'fr' | 'en'
   
-  const title = localArticle 
+  // Un champ localisé Sanity peut être absent, vide, ou une simple chaîne.
+  const localized = (field: any, fallback = ''): string => {
+    if (!field) return fallback
+    if (typeof field === 'string') return field
+    return field[lang] || field.fr || field.en || fallback
+  }
+
+  const title = localArticle
     ? (localArticle.title[lang] || localArticle.title.fr)
-    : (sanityPost!.title[lang] || sanityPost!.title.fr)
-  
+    : localized(sanityPost!.title, currentLanguage === 'fr' ? 'Sans titre' : 'Untitled')
+
   const excerpt = localArticle
     ? (localArticle.excerpt[lang] || localArticle.excerpt.fr)
-    : (sanityPost!.excerpt?.[lang] || sanityPost!.excerpt?.fr || '')
+    : localized(sanityPost!.excerpt)
 
   const author = localArticle ? localArticle.author : sanityPost!.author
   const authorRole = localArticle ? (localArticle.authorRole[lang] || localArticle.authorRole.fr) : undefined
   const publishedAt = localArticle ? localArticle.dateValue.toISOString() : sanityPost!.publishedAt
-  const readTime = localArticle ? localArticle.readTime : '5 min'
-  const category = localArticle ? localArticle.category : sanityPost!.category
+  const readTime = localArticle ? localArticle.readTime : (sanityPost!.readTime || '5 min')
+  const category = localArticle ? localArticle.category : (sanityPost!.category || '')
   const tags = localArticle ? localArticle.tags : (sanityPost!.tags || [])
   const contentBlocks = localArticle ? (localArticle.content[lang] || localArticle.content.fr) : null
-  const sanityContent = !localArticle && sanityPost ? (sanityPost.content?.[lang] || sanityPost.content?.fr) : null
+  // Le Studio enregistre le corps dans "content" ; "body" couvre les anciens documents.
+  const rawBody = !localArticle && sanityPost ? (sanityPost.content ?? sanityPost.body) : null
+  const localizedBody = Array.isArray(rawBody) ? rawBody : (rawBody?.[lang] || rawBody?.fr || rawBody?.en)
+  const sanityContent = Array.isArray(localizedBody) && localizedBody.length > 0 ? localizedBody : null
 
   const formatDate = (dateString: string) => {
+    if (!dateString) return ''
     const date = new Date(dateString)
+    if (isNaN(date.getTime())) return ''
     return currentLanguage === 'fr' 
       ? date.toLocaleDateString('fr-FR', { 
           year: 'numeric', 
@@ -125,6 +137,11 @@ const BlogPost: React.FC = () => {
     return categories[cat] || cat
   }
 
+  // null si mainImage n'a pas d'asset : la section image est simplement omise.
+  const heroImageUrl = !localArticle && sanityPost
+    ? safeImageUrl(sanityPost.mainImage, (b) => b.width(1200).height(600).fit('crop'))
+    : null
+
   const shareUrl = window.location.href
   const shareText = `${title} - ${excerpt}`
 
@@ -146,10 +163,15 @@ const BlogPost: React.FC = () => {
 
   const portableTextComponents = {
     types: {
-      image: ({ value }: { value: { asset: unknown; alt?: string; caption?: string } }) => (
+      image: ({ value }: { value: { asset?: unknown; alt?: string; caption?: string } }) => {
+        // Une image insérée dans le corps sans fichier uploadé ferait throw
+        // urlFor() et blanchirait la page : on n'affiche alors rien.
+        const src = safeImageUrl(value, (b) => b.width(800).height(400).fit('crop'))
+        if (!src) return null
+        return (
         <div className="my-8">
           <img
-            src={urlFor(value).width(800).height(400).url()}
+            src={src}
             alt={value.alt || ''}
             className="w-full h-auto rounded-lg shadow-lg"
           />
@@ -159,7 +181,8 @@ const BlogPost: React.FC = () => {
             </p>
           )}
         </div>
-      ),
+        )
+      },
     },
     block: {
       normal: ({ children }: { children?: React.ReactNode }) => (
@@ -274,10 +297,10 @@ const BlogPost: React.FC = () => {
             </div>
 
             {/* Image principale (Sanity uniquement) */}
-            {!localArticle && sanityPost?.mainImage && (
+            {!localArticle && heroImageUrl && (
               <div className="mb-12">
                 <img
-                  src={urlFor(sanityPost.mainImage).width(1200).height(600).url()}
+                  src={heroImageUrl}
                   alt={title}
                   className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
                 />

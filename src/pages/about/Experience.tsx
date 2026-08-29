@@ -2,36 +2,35 @@ import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import TestimonialsSection from '../../components/TestimonialsSection';
-import { Clock, Users, BarChart, ArrowRight, Star } from 'lucide-react';
+import { Clock, Users, BarChart, ArrowRight } from 'lucide-react';
 import { useTranslation } from '../../hooks/useTranslation';
 import { useSanityExperienceStats, useSanityProjects } from '../../hooks/useSanityContent';
+import { safeImageUrl } from '../../lib/sanity'
+import { localizedText } from '../../lib/localized'
 
 const Experience: React.FC = () => {
   const { currentLanguage, t } = useTranslation();
   const { experienceStats } = useSanityExperienceStats();
-  const { projects: sanityProjects, urlFor } = useSanityProjects();
+  const { projects: sanityProjects } = useSanityProjects();
 
   // Stats - Sanity ou fallback
-  const stats = (experienceStats && experienceStats.length > 0) ? experienceStats.map(stat => ({
-    value: stat.value,
-    label: stat.label[currentLanguage as 'fr' | 'en'] || stat.label.fr
-  })) : [
-    { value: '200+', label: 'Projets Réalisés' },
-    { value: '15+', label: 'Pays Africains' },
-    { value: '95%', label: 'Clients Satisfaits' },
-    { value: '50M€+', label: 'Impact Généré' }
+  const stats = [
+    { value: experienceStats?.projects || '200+', label: currentLanguage === 'fr' ? 'Projets Réalisés' : 'Completed Projects' },
+    { value: experienceStats?.countries || '15+', label: currentLanguage === 'fr' ? 'Pays Africains' : 'African Countries' },
+    { value: experienceStats?.satisfaction || '95%', label: currentLanguage === 'fr' ? 'Clients Satisfaits' : 'Satisfied Clients' },
+    { value: experienceStats?.impact || '50M€+', label: currentLanguage === 'fr' ? 'Impact Généré' : 'Generated Impact' }
   ];
 
   // Projets - Sanity ou fallback
   const projects = (sanityProjects && sanityProjects.length > 0) ? sanityProjects.map(project => ({
-    title: project.title[currentLanguage as 'fr' | 'en'] || project.title.fr,
+    title: localizedText(project.title, currentLanguage as 'fr' | 'en'),
     client: project.client,
-    description: project.description[currentLanguage as 'fr' | 'en'] || project.description.fr,
-    impact: project.impact[currentLanguage as 'fr' | 'en'] || project.impact.fr,
+    description: localizedText(project.description, currentLanguage as 'fr' | 'en'),
+    impact: localizedText(project.impact, currentLanguage as 'fr' | 'en'),
     duration: typeof project.duration === 'string' ? project.duration : 
              (project.duration?.[currentLanguage as 'fr' | 'en'] || project.duration?.fr || ''),
     tags: project.tags || [],
-    image: project.image ? urlFor(project.image).width(400).height(300).url() : null
+    image: safeImageUrl(project.image, (b) => b.width(400).height(300).fit('crop'))
   })) : [
     {
       title: 'Transformation Digitale Bancaire',

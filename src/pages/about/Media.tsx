@@ -1,4 +1,5 @@
 import React from 'react';
+import { localizedText, formatDateSafe } from '../../lib/localized'
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { Newspaper, Video, Mic, Calendar, ArrowRight, ExternalLink } from 'lucide-react';
@@ -22,8 +23,8 @@ const Media: React.FC = () => {
 
   // Communiqués - Sanity ou fallback
   const pressReleases = (sanityPressReleases && sanityPressReleases.length > 0) ? sanityPressReleases.map(press => ({
-    date: new Date(press.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }),
-    title: press.title[currentLanguage as 'fr' | 'en'] || press.title.fr,
+    date: formatDateSafe(press.date, currentLanguage as 'fr' | 'en', { year: 'numeric', month: 'long', day: 'numeric' }),
+    title: localizedText(press.title, currentLanguage as 'fr' | 'en'),
     source: press.source,
     link: press.link || '#'
   })) : [
@@ -51,9 +52,9 @@ const Media: React.FC = () => {
   const mediaAppearances = (sanityMediaAppearances && sanityMediaAppearances.length > 0) ? sanityMediaAppearances.map(media => ({
     type: media.type,
     icon: getMediaIcon(media.type),
-    title: media.title[currentLanguage as 'fr' | 'en'] || media.title.fr,
+    title: localizedText(media.title, currentLanguage as 'fr' | 'en'),
     platform: media.platform,
-    date: new Date(media.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }),
+    date: formatDateSafe(media.date, currentLanguage as 'fr' | 'en', { year: 'numeric', month: 'long', day: 'numeric' }),
     link: media.link || '#'
   })) : [
     {
@@ -84,10 +85,10 @@ const Media: React.FC = () => {
 
   // Événements - Sanity ou fallback
   const upcomingEvents = (sanityUpcomingEvents && sanityUpcomingEvents.length > 0) ? sanityUpcomingEvents.map(event => ({
-    date: new Date(event.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' }),
-    title: event.title[currentLanguage as 'fr' | 'en'] || event.title.fr,
+    date: formatDateSafe(event.date, currentLanguage as 'fr' | 'en', { year: 'numeric', month: 'long', day: 'numeric' }),
+    title: localizedText(event.title, currentLanguage as 'fr' | 'en'),
     location: event.location,
-    role: event.role[currentLanguage as 'fr' | 'en'] || event.role.fr,
+    role: localizedText(event.role, currentLanguage as 'fr' | 'en'),
     link: event.link
   })) : [
     {

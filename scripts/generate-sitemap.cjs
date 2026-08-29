@@ -44,8 +44,38 @@ function extractArticleSlugs() {
   return slugs;
 }
 
+// ── Slugs des articles publiés dans Sanity ──────────────────────────
+const SANITY_PROJECT_ID = process.env.VITE_SANITY_PROJECT_ID || 'ozf76xbs';
+const SANITY_DATASET = process.env.VITE_SANITY_DATASET || 'production';
+
+async function fetchSanitySlugs() {
+  const groq = '*[_type == "blogPost" && defined(slug.current)]{"slug": slug.current, "date": publishedAt, _updatedAt}';
+  const url = `https://${SANITY_PROJECT_ID}.api.sanity.io/v2024-11-19/data/query/${SANITY_DATASET}?query=${encodeURIComponent(groq)}`;
+
+  try {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 10000);
+    const res = await fetch(url, { signal: ctrl.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const { result } = await res.json();
+    return (Array.isArray(result) ? result : [])
+      .filter((a) => a && typeof a.slug === 'string' && a.slug.length > 0)
+      .map((a) => ({
+        slug: a.slug,
+        lastmod: (a._updatedAt || a.date || '').split('T')[0] || TODAY,
+      }));
+  } catch (err) {
+    // Le sitemap ne doit jamais faire échouer un déploiement : on se contente
+    // des articles locaux et on signale l'incident dans les logs de build.
+    console.warn(`⚠️  Articles Sanity non récupérés (${err.message}) — sitemap limité aux articles locaux.`);
+    return [];
+  }
+}
+
 // ── Génération du XML ───────────────────────────────────────────────
-function generateSitemap() {
+function generateSitemap(sanityArticles = []) {
   const slugs = extractArticleSlugs();
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -61,11 +91,20 @@ function generateSitemap() {
     xml += `  </url>\n`;
   }
 
-  // Articles de blog (auto-détectés)
-  for (const slug of slugs) {
+  // Articles de blog locaux + articles publiés dans Sanity.
+  // Un slug Sanity peut doubler un slug local : on dédoublonne.
+  const vus = new Set();
+  const articles = [
+    ...slugs.map((slug) => ({ slug, lastmod: TODAY })),
+    ...sanityArticles,
+  ];
+
+  for (const article of articles) {
+    if (vus.has(article.slug)) continue;
+    vus.add(article.slug);
     xml += `  <url>\n`;
-    xml += `    <loc>${SITE_URL}/blog/${slug}</loc>\n`;
-    xml += `    <lastmod>${TODAY}</lastmod>\n`;
+    xml += `    <loc>${SITE_URL}/blog/${article.slug}</loc>\n`;
+    xml += `    <lastmod>${article.lastmod || TODAY}</lastmod>\n`;
     xml += `    <changefreq>monthly</changefreq>\n`;
     xml += `    <priority>0.6</priority>\n`;
     xml += `  </url>\n`;
@@ -76,9 +115,15 @@ function generateSitemap() {
 }
 
 // ── Écriture du fichier ─────────────────────────────────────────────
-const sitemap = generateSitemap();
-const outputPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
-fs.writeFileSync(outputPath, sitemap, 'utf-8');
+(async () => {
+  const sanityArticles = await fetchSanitySlugs();
+  const sitemap = generateSitemap(sanityArticles);
+  const outputPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
+  fs.writeFileSync(outputPath, sitemap, 'utf-8');
 
-const slugs = extractArticleSlugs();
-console.log(`✅ sitemap.xml généré avec ${staticPages.length} pages + ${slugs.length} articles de blog`);
+  const slugs = extractArticleSlugs();
+  const nouveaux = sanityArticles.filter((a) => !slugs.includes(a.slug)).length;
+  console.log(
+    `✅ sitemap.xml généré avec ${staticPages.length} pages + ${slugs.length} articles locaux + ${nouveaux} articles Sanity`
+  );
+})();

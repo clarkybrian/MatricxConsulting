@@ -67,3 +67,6 @@ Thumbs.db
 optimize-images.cjs
 public_html/
 temp_*.txt
+
+# Artefacts de tests e2e
+tests/e2e/screenshots/

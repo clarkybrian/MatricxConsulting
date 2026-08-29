@@ -12,7 +12,12 @@
     "pwa-install": "npm install --save-dev sharp && npm run generate-icons",
     "sanity": "sanity dev",
     "sanity:deploy": "sanity deploy",
-    "sanity:build": "sanity build"
+    "sanity:build": "sanity build",
+    "test:e2e": "node tests/e2e/blog.e2e.mjs",
+    "test:e2e:reel": "node tests/e2e/blog.reel.mjs",
+    "test:resilience": "node tests/e2e/site.resilience.mjs",
+    "test:all": "npm run test:e2e && npm run test:e2e:reel && npm run test:resilience",
+    "preview:test": "vite preview --port 5173 --strictPort"
   },
   "dependencies": {
     "@portabletext/react": "^4.0.3",
