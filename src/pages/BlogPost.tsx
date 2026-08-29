@@ -139,7 +139,7 @@ const BlogPost: React.FC = () => {
 
   // null si mainImage n'a pas d'asset : la section image est simplement omise.
   const heroImageUrl = !localArticle && sanityPost
-    ? safeImageUrl(sanityPost.mainImage, (b) => b.width(1200).height(600).fit('crop'))
+    ? safeImageUrl(sanityPost.mainImage, (b) => b.width(1200).fit('max'))
     : null
 
   const shareUrl = window.location.href
@@ -166,7 +166,7 @@ const BlogPost: React.FC = () => {
       image: ({ value }: { value: { asset?: unknown; alt?: string; caption?: string } }) => {
         // Une image insérée dans le corps sans fichier uploadé ferait throw
         // urlFor() et blanchirait la page : on n'affiche alors rien.
-        const src = safeImageUrl(value, (b) => b.width(800).height(400).fit('crop'))
+        const src = safeImageUrl(value, (b) => b.width(800).fit('max'))
         if (!src) return null
         return (
         <div className="my-8">
@@ -302,7 +302,7 @@ const BlogPost: React.FC = () => {
                 <img
                   src={heroImageUrl}
                   alt={title}
-                  className="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg"
+                  className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
             )}

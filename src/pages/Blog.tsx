@@ -151,7 +151,7 @@ const Blog: React.FC = () => {
       readTime: post.readTime || '6 min',
       // safeImageUrl renvoie null si l'image n'a pas d'asset (alt saisi mais
       // aucun fichier uploadé) : on retombe alors sur l'image locale.
-      image: safeImageUrl(post.mainImage, (b) => b.width(600).height(400).fit('crop')) || whatsapp1,
+      image: safeImageUrl(post.mainImage, (b) => b.width(600).fit('max')) || whatsapp1,
       views: pseudoViews(post._id || String(index)),
       slug: post.slug?.current, // Slug pour les articles Sanity
       isSanity: true // Flag pour identifier les articles Sanity
