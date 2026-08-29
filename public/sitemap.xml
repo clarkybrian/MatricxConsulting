@@ -181,8 +181,14 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://matricxconsulting.com/blog/developpeur-ia</loc>
-    <lastmod>2026-08-28</lastmod>
+    <loc>https://matricxconsulting.com/blog/matricx-insights-01-relation-client-banque-detail-cameroun</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matricxconsulting.com/blog/matricx-insights-02-experience-voyageur-transport-vip-cameroun</loc>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
