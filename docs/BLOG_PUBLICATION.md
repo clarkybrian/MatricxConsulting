@@ -47,6 +47,20 @@ build réussit quand même.
 immédiatement sur le site, mais n'entre dans le sitemap qu'au déploiement
 suivant.
 
+## Routage (vercel.json)
+
+La reecriture SPA renvoie `index.html` pour toute URL, avec deux exclusions :
+
+- `/api/` : les fonctions serverless doivent etre servies telles quelles.
+- `/assets/` : un chunk supprime par un deploiement doit renvoyer un vrai 404.
+  Sans cette exclusion, un onglet reste ouvert sur une version precedente recoit
+  du HTML en 200 a la place du JS attendu, et echoue au parsing.
+
+Attention : `vercel.json` rejette toute propriete inconnue. Ajouter une cle
+`comment` dans une regle de reecriture fait echouer le deploiement a la
+validation, sans que le site en production ne change — le symptome est un push
+qui ne se deploie jamais.
+
 ## Tests
 
 Le serveur doit tourner sur le port **5173** (seuls `localhost:3000` et

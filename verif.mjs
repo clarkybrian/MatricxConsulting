@@ -1,0 +1,13 @@
+import puppeteer from 'puppeteer';
+const b = await puppeteer.launch({headless:'new',args:['--no-sandbox']});
+const p = await b.newPage();
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+const r = await p.goto('https://www.matricxconsulting.com/blog/developpeur-ia',{waitUntil:'networkidle2',timeout:60000});
+await new Promise(x=>setTimeout(x,6000));
+console.log('HTTP:', r.status(), '| URL finale:', p.url());
+const t = await p.evaluate(()=>document.body.innerText);
+console.log('longueur texte:', t.trim().length);
+console.log('h1:', await p.$eval('h1',h=>h.innerText).catch(()=>'(aucun)'));
+console.log('bundle:', await p.evaluate(()=>Array.from(document.querySelectorAll('script[src]')).map(s=>s.getAttribute('src')).find(s=>s.includes('index-'))));
+console.log('erreurs JS:', errs.length? errs : '(aucune)');
+await b.close();
